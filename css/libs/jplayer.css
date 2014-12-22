@@ -1,0 +1,101 @@
+/*-----------------------------------*/
+/* Post Audio */
+/*-----------------------------------*/
+
+.jp-current-time,
+.jp-duration,
+.jp-stop,
+.jp-repeat,
+.jp-repeat-off,
+.jp-shuffle,
+.jp-volume-bar,
+.jp-volume-max,
+.song_title div,
+.jp-playlist-toggle,
+.jp-mute,
+.jp-unmute,
+.jp-previous,
+.jp-next,
+.jp-playlist
+{
+	display: none !important;
+}
+.jp-audio .inner{padding: 0 !important;}
+
+.jp-audio a:hover,
+.jp-audio a:focus,
+.jp-audio a:active{
+    outline: none;
+}
+.jp-controls-wrap {
+    position: relative;
+    background: #3bbec0;
+}
+.jp-controls a {
+	display:block;
+	position: relative;
+	text-indent:-9999px;
+    width:44px;
+    height:43px;
+    background: #339c9e;
+}
+.jp-controls a .arrow {
+    display: block;
+    position: absolute;
+    top:18px;
+    right:-4px;
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #339c9e;
+    border-bottom: 4px solid transparent;
+}
+.jp-play:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top:16px;
+    left:19px;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-left: 8px solid #fff;
+    border-bottom: 6px solid transparent;
+}
+.jp-pause:before,
+.jp-pause:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top:16px;
+    left:18px;
+    width: 3px;
+    height: 12px;
+    background: #fff;
+}
+.jp-pause:after{left: 23px;}
+
+.jp-progress,
+.jp-seek-bar,
+.jp-play-bar{
+    height:5px;
+}
+.jp-progress {
+    position: absolute;
+    top:19px;
+    left:57px;
+    right:18px;
+	overflow: hidden;
+}
+.jp-seek-bar {
+	cursor: pointer;
+	background: #9ddfe0;
+    overflow: hidden;
+}
+.jp-play-bar {
+	background: #fff;
+	width:0;
+}
+
+.song_title img{display: block; width: 100%;}
+.jp-jplayer audio, .jp-jplayer {width:0; height:0;}

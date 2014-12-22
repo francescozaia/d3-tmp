@@ -1,0 +1,89 @@
+{
+  "name": "Weight",
+  "description": "",
+  "id": 79,
+  "subcategories": [{
+    "name": "Weight",
+    "description": "",
+    "id": 83,
+    "markers": [{
+      "id": 261,
+      "name": "Weight",
+      "description": "Your weight",
+      "marker_code": "Weight",
+      "long_description": "",
+      "advice": "",
+      "units": "pounds",
+      "test_dates": ["2014-12-19"],
+      "test_results": [{
+        "test_result": {
+          "id": 2998849,
+          "drawn_on": "2014-12-19",
+          "value": 75,
+          "diagnostic_type": null,
+          "date": "2014-12-19",
+          "reference_range": null,
+          "source": null,
+          "lab_marker_id": null,
+          "code": null,
+          "updated_at": null
+        }
+      }],
+      "risks": ["optimal"],
+      "risk_range_new": [{
+        "value": "high",
+        "range_band": [0, 18.5]
+      }, {
+        "value": "high",
+        "range_band": [50, 100]
+      }, {
+        "value": "medium",
+        "range_band": [25, 50]
+      }, {
+        "value": "optimal",
+        "range_band": [18.5, 25]
+      }],
+      "risk_range_type": "ScalarRiskRange",
+      "risk_type": "two_region_descending",
+      "risk_bounds": null,
+      "lab_notes": [],
+      "graphable": true
+    }, {
+      "id": 263,
+      "name": "Body Mass Index",
+      "description": "Measure of weight to height",
+      "marker_code": "BMI",
+      "long_description": "",
+      "advice": "",
+      "units": "Kg/m2",
+      "test_dates": ["2014-12-19"],
+      "test_results": [{
+        "test_result": {
+          "id": 2998851,
+          "drawn_on": "2014-12-19",
+          "value": 25.8,
+          "diagnostic_type": null,
+          "date": "2014-12-19",
+          "reference_range": null,
+          "source": null,
+          "lab_marker_id": null,
+          "code": null,
+          "updated_at": null
+        }
+      }],
+      "risks": ["medium"],
+      "risk_range_new": [{
+        "value": "high",
+        "range_band": [30, 100]
+      }, {
+        "value": "optimal",
+        "range_band": [0, 30]
+      }],
+      "risk_range_type": "ScalarRiskRange",
+      "risk_type": "five_region_symmetric",
+      "risk_bounds": null,
+      "lab_notes": [],
+      "graphable": true
+    }]
+  }]
+}
