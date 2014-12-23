@@ -1,6 +1,6 @@
 $(function() {
 
-  var feature = (function() {
+  var littleChartBuilder = (function() {
 
     var width,
       height,
@@ -11,225 +11,184 @@ $(function() {
       element,
       units,
       range,
-      data;
+      data,
+      lineColours,
+      chart,
+      scale;
 
-    var chart;
-    var scale;
+    var _drawChartComponent = function(_element, _data, settings) {
 
-    var privateThing = "secret";
-    var publicThing = "not secret";
+      element = _element;
 
+      width = settings.width;
+      height = settings.height;
 
-    var lineColors = {
-        optimal: "#3bbec0",
-        medium: "#ebc85e",
-        high: "#e87352"
-      },
-      gradientColors = {
-        optimal: ["#56a307", "#60b609"],
-        medium: ["#e19825", "#f3a124"],
-        high: ["#d54705", "#dd4c0b"]
-      },
-      strokeColors = {
-        optimal: "#3bbec0",
-        medium: "#ebc85e",
-        high: "#e87352"
-      };
+      leftPadding = settings.leftPadding;
+      rightPadding = settings.rightPadding;
+      topPadding = settings.topPadding;
+      bottomPadding = settings.bottomPadding;
+      lineColours = settings.lineColours;
 
-    var chartComponent = function(_data, _width, _height,
-      _leftPadding, _rightPadding, _topPadding, _bottomPadding,
-      _element) {
-      data = _data;
-      width = _width;
-      height = _height;
-      leftPadding = _leftPadding;
-      rightPadding = _rightPadding;
-      topPadding = _topPadding;
-      bottomPadding = _bottomPadding;
-      element = _element[0];
-      if (element.className.indexOf("chart-body-mass") > 0) {
-        data = data.subcategories[0].markers[0];
-        units = data.units;
-        range = data.risk_range_new;
-      } else {
-        data = data.subcategories[0].markers[1];
-        units = data.units;
-        range = data.risk_range_new;
-      }
+      // picking element id and selecting marker
+      var chartID = parseInt(element.id.replace("chart-", ""), 10);
+      data = _data.markers[chartID];
+      units = _data.markers[chartID].units;
+      range = _data.markers[chartID].risk_range;
 
-
+      /**
+       * getting the max value from all the risk bands
+       * to set the domain
+       */
+      var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));
 
       scale = d3.scale.linear();
-      scale.domain([0, 100]); // my max range value is always 100
+      scale.domain([0, maxRange]);
+      scale.range([0, width]);
 
-      scale.range([0, width]); // my chart width is 350
-
-      console.log("uno" + scale(10)); //Returns 10
-      console.log("uno" + scale(100)); //Returns 350
-      console.log("uno" + scale(50)); //Returns 175
-
-      draw();
-
-    };
-
-    var draw = function() {
       chart = d3.select(element)
         .append("svg:svg")
-        .attr("class", "chart") //redundant?
         .attr('width', width)
         .attr('height', height);
-      //var data = d3.range(51);
 
+      // _drawAxis();
 
-      var o = d3.scale.ordinal()
-        .domain([1, 2, 3, 4])
-        .rangeRoundPoints([0, 100]);
+      _drawBands();
 
-      var data = o.range(); // [1, 34, 67, 100]
-
-      var x = d3.scale.ordinal()
-        .domain(data)
-        .rangeBands([0, width])
-
-      var colors = d3.scale.category20()
-
-      /*
-      chart.selectAll('rect.example1')
-        .data(data)
-        .enter()
-        .append('rect')
-        .attr('class', 'example1')
-        .style('fill', colors)
-        .attr('x', function(d) {
-          return x(d)
-        })
-        .attr('y', 50)
-        .attr('width', Math.round(x.rangeBand()))
-        .attr('height', 50);
-        */
-
-      drawBands();
+      _drawMarker();
     }
 
-    var drawBands = function() {
+    var _drawAxis = function() {
+      var x = scale.range([0, width]);
+
+      var xAxis = d3.svg.axis()
+        .scale(x)
+        .tickValues(x.domain())
+        .orient("bottom");
+
+      chart.append("svg")
+        .attr("width", "1")
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(0," + 20 + ")");
+
+      chart.append("g")
+        .attr("class", "x axis")
+        .call(xAxis)
+        .attr("transform", "translate(0," + 20 + ")");
+    }
+
+    var _drawBands = function() {
 
       range.forEach(function(b) {
 
         var value_zero = parseInt(b.range_band[0], 10);
         var value_uno = parseInt(b.range_band[1], 10);
 
-        chart.append("svg:line")
-          .attr("class", "rangeBand")
-          .attr("x1", Math.floor(scale(value_zero)))
-          .attr("x2", Math.floor(scale(value_uno) - 1))
-          .attr("y1", 0) //to make space for the cursor
-          .attr("y2", 0)
-          .attr("stroke", lineColors[b.value])
-          .attr("stroke-width", 40)
+        var random = Math.random().toString(36).replace(
+          /[^a-z]+/g, '').substr(0, 5);
 
+        var gradient = chart.append("svg:defs")
+          .append("svg:linearGradient")
+          .attr("id", "gradient" + random)
+          .attr("x1", "0%")
+          .attr("y1", "0%")
+          .attr("x2", "0%")
+          .attr("y2", "100%")
+          .attr("spreadMethod", "pad");
+
+        gradient.append("svg:stop")
+          .attr("offset", "20%")
+          .attr("stop-color", lineColours[b.value])
+          .attr("stop-opacity", .8);
+
+        gradient.append("svg:stop")
+          .attr("offset", "100%")
+          .attr("stop-color", lineColours[b.value])
+          .attr("stop-opacity", .6);
+
+        chart.append("svg:rect")
+          .attr("class", "rangeBand")
+          .attr("x", Math.floor(scale(value_zero)))
+          .attr("width", Math.floor(scale(value_uno) - 1) -
+            Math.floor(scale(value_zero)))
+          .attr("y", 24) //to make space for the cursor
+          .attr("height", 0)
+          .attr("fill", "url(#gradient" + random + ")")
+          .transition()
+          .duration(600)
+          .attr("height", 16)
+          .attr("y", 4)
 
       });
 
-
-      /*
-      var ddd = chart.append("circle")
-        .attr("class", "dot")
-        .attr("r", 10)
-        .attr("cx", function(d) {
-          return 15;
-        })
-        .attr("cy", function(d) {
-          return 20;
-        })
-        .attr("stroke", "#FFF")
-        .attr("stroke-width", 2)
-        .style("fill", function(d) {
-          return "#61aaca";
-        })
-        .transition()
-        .duration(1000)
-        .delay(2000)
-        .attr("cx", function(d) {
-          var x = scale(data.test_results[0].test_result.value)
-          return x;
-        })
-
-      $(ddd[0]).on("click", function(d) {
-
-      })
-      */
-      var cursor = chart.append('rect')
-        .attr('class', 'example1')
-        .attr("stroke", "#FFF")
-        .attr("stroke-width", 2)
-        .style('fill', "#666")
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('width', 10)
-        .attr('height', 20)
-        .transition()
-        .duration(1000)
-        .delay(2000)
-        .attr('x', function(d) {
-          var x = scale(data.test_results[0].test_result.value)
-          return x;
-        })
     }
 
-    var sayPrivateThing = function() {
-      console.log(privateThing);
-      changePrivateThing();
-    };
+    var _drawMarker = function() {
+
+      var marker = chart.append("circle")
+        .attr("class", "dot")
+        .attr("r", 0)
+        .attr("opacity", 0)
+        .attr("cx", function(d) {
+          var x = scale(data.test_results[0].test_result.value)
+          return x;
+        })
+        .attr("cy", 12)
+        .attr("stroke", "#FFF")
+        .attr("stroke-width", 2)
+        .style("fill", "#333")
+        .style("fill-opacity", .6)
+        .transition()
+        .duration(1000)
+        .delay(600)
+        .attr("r", 9)
+        .attr("opacity", 1)
+
+      $(marker[0]).on("mouseover", function(d) {
+        d3.select(this).transition().duration(200).attr("r",
+          11)
+      })
+      $(marker[0]).on("mouseout", function(d) {
+        d3.select(this).transition().duration(200).attr("r",
+          9)
+      })
+    }
 
     // Public API
     return {
-      chartComponent: chartComponent,
-      publicThing: publicThing
+      drawChartComponent: _drawChartComponent
     };
+
   })();
 
-  /* Dataviz */
 
+  /***********************************/
+  /* jQuery plugin to visualize data */
+  /***********************************/
 
   $.fn.visualizeRisk = function(data, options) {
 
-
     // Extending defaults.
     var settings = $.extend({
-      color: "#556b2f",
-      backgroundColor: "white"
+      height: 36,
+      width: 160,
+      leftPadding: 50,
+      rightPadding: 50,
+      topPadding: 0,
+      bottomPadding: 50,
+      lineColours: {
+        optimal: "#A7C520",
+        medium: "#ebc85e",
+        high: "#e87352"
+      }
     }, options);
 
-
-
-    var _element = $(this),
-      _data = data,
-      _height = 30,
-      _width = 200,
-      _leftPadding = 50,
-      _rightPadding = 50,
-      _topPadding = 0,
-      _bottomPadding = 50,
-
-      _chart = feature.chartComponent(_data, _width, _height,
-        _leftPadding, _rightPadding, _topPadding, _bottomPadding,
-        _element);
-  };
-
-  d3.json("./js/data.json", function(error, json) {
-
-    if (error) {
-      return console.warn(error);
+    var elements = $(this);
+    for (var i = 0; i < elements.length; i += 1) {
+      var chart = littleChartBuilder.drawChartComponent(elements[i], data,
+        settings);
     }
-    var data = json;
 
-    var rangeBands = [];
-    var options = {};
-
-    $(".chart-body-mass").visualizeRisk(data, options);
-    $(".chart-weight").visualizeRisk(data, options);
-  });
-
-
+  };
 
 });

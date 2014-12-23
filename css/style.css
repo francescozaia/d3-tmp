@@ -3870,3 +3870,20 @@ input.weather-search-submit {
 
 .chart line {
   opacity: 0.75; }
+
+.chart .dot {
+  cursor: pointer; }
+
+.progressbar.progressbar--chart .ui-progressbar {
+  width: 100%;
+  height: 20px;
+  border-radius: 0; }
+  .progressbar.progressbar--chart .ui-progressbar .chart {
+    margin-top: -3px;
+    margin-left: 1px;
+    float: left; }
+  .progressbar.progressbar--chart .ui-progressbar .chart-inner {
+    display: inline-block;
+    line-height: 20px;
+    margin-right: 10px;
+    float: right; }

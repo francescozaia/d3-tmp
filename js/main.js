@@ -22,4 +22,19 @@ $(function() {
   });
   */
 
+  /*********************/
+  /* On data JSON load */
+  /*********************/
+
+  d3.json("./js/data.json", function(error, data) {
+
+    if (error) {
+      return console.warn(error); // TODO handle errors
+    }
+
+    var options = {};
+
+    $(".chart").visualizeRisk(data, options);
+  });
+
 });
