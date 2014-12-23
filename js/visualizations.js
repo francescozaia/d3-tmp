@@ -127,6 +127,9 @@ $(function() {
 
       var marker = chart.append("circle")
         .attr("class", "dot")
+        .attr("data-title", "<p class='first'><span class='big'>" +
+          data.test_results[0].test_result.value + "</span> " + data.units +
+          "</p><p class='second'>" + data.marker_code + "</p>")
         .attr("r", 0)
         .attr("opacity", 0)
         .attr("cx", function(d) {
@@ -141,17 +144,37 @@ $(function() {
         .transition()
         .duration(1000)
         .delay(600)
-        .attr("r", 9)
+        .attr("r", 6)
         .attr("opacity", 1)
 
       $(marker[0]).on("mouseover", function(d) {
-        d3.select(this).transition().duration(200).attr("r",
-          11)
-      })
+        d3.select(this).transition().duration(200).attr("r", 11);
+        _showTooltip(this);
+      });
       $(marker[0]).on("mouseout", function(d) {
-        d3.select(this).transition().duration(200).attr("r",
-          9)
-      })
+        d3.select(this).transition().duration(200).attr("r", 6);
+        _hideTooltip(this);
+      });
+      $(marker[0]).on("click", function(d) {
+        _showTooltip(this);
+      });
+    }
+
+    var _showTooltip = function(element) {
+      var posX = $(element).offset().left - 33,
+        posY = $(element).offset().top - 94,
+        txt = $(element).data("title");
+      $(".tooltip").find(".tooltip-inner").html(txt);
+      $(".tooltip").css("position", "absolute").css("top", posY +
+        "px").css("left", posX + "px");
+      $(".tooltip").removeClass("fadeOut");
+      $(".tooltip").addClass("bounceIn");
+    }
+    var _hideTooltip = function(element) {
+      $(".tooltip").css("position", "absolute").css("left", -1000 +
+        "px");
+      $(".tooltip").removeClass("bounceIn");
+      $(".tooltip").addClass("fadeOut");
     }
 
     // Public API

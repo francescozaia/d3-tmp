@@ -2,7 +2,7 @@
 $(function() {
 
   /* Tooltips activator */
-  $('[data-toggle="tooltip"]').tooltip();
+  //$('[data-toggle="tooltip"]').tooltip();
 
   /* Smooth scrolling */
   /* interferes with carousel

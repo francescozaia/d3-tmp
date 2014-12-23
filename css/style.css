@@ -3874,16 +3874,64 @@ input.weather-search-submit {
 .chart .dot {
   cursor: pointer; }
 
-.progressbar.progressbar--chart .ui-progressbar {
-  width: 100%;
-  height: 20px;
-  border-radius: 0; }
-  .progressbar.progressbar--chart .ui-progressbar .chart {
-    margin-top: -3px;
-    margin-left: 1px;
-    float: left; }
-  .progressbar.progressbar--chart .ui-progressbar .chart-inner {
-    display: inline-block;
-    line-height: 20px;
-    margin-right: 10px;
-    float: right; }
+.col-chart {
+  padding-top: 40px; }
+
+.progressbar {
+  margin-top: 5px; }
+  .progressbar.progressbar--chart .ui-progressbar {
+    width: 100%;
+    height: 20px;
+    border-radius: 0; }
+    .progressbar.progressbar--chart .ui-progressbar .chart {
+      margin-top: -3px;
+      margin-left: 1px;
+      float: left; }
+    .progressbar.progressbar--chart .ui-progressbar .chart-inner {
+      display: inline-block;
+      line-height: 20px;
+      margin-right: 10px;
+      float: right; }
+
+.tooltip-inner {
+  min-width: 80px;
+  padding: 20px 8px;
+  font-size: 11px;
+  letter-spacing: 0px;
+  color: #6a6a6a;
+  text-align: center;
+  text-decoration: none;
+  background-color: #FFF;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  height: 80px;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.2);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.2);
+  box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.2); }
+
+.tooltip-inner p {
+  margin: 0; }
+  .tooltip-inner p.first {
+    font-weight: bold; }
+  .tooltip-inner p.second {
+    border-top: 1px solid #6a6a6a;
+    line-height: 9px;
+    padding-top: 4px;
+    font-weight: 400; }
+  .tooltip-inner p .big {
+    font-size: 14px; }
+
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0; }
+
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 10px solid #FFF; }
