@@ -1,0 +1,133 @@
+/***************/
+/* Print style */
+/***************/
+
+@media print {
+  body {
+    background: none;
+    background-color: none;
+  }
+  .body_wrap {
+    background-image: none;
+  }
+
+  q {
+    quotes: none;
+    &:before, &:after {
+      content: "";
+    }
+  }
+
+  /*@page {
+    size: 297mm 210mm;
+  }*/
+
+  @page :first {
+    margin: 1cm 2cm;
+  }
+
+  /* Hiding everything unneeded */
+
+  video,
+  audio,
+  embed,
+  object,
+  footer,
+  .print-hidden {
+    display: none;
+  }
+
+  img {
+    border: 0
+  }
+
+  /* font sizes */
+
+  body {
+    /*font: 12pt Georgia, "Times New Roman", Times, serif;
+    line-height: 1.3;
+    color: #000;*/
+  }
+
+  h1 {
+    font-size: 24pt;
+  }
+
+  h2 {
+    font-size: 14pt;
+    margin-top: 25px;
+  }
+
+  .print-reverse {
+    &.col-sm-8 {
+      float:right;
+    }
+    &.col-sm-4 {
+      float:left;
+    }
+  }
+
+  /* Show printer-frindly logo. */
+
+  header {
+    padding: 0;
+  }
+
+  header .print {display: block} // TODO
+
+  /* Display the URL of the site so that the user knows where the printout came from */
+
+  header:after {
+    display: block; content: "Thank your for printing our content at www.getlivesmart.com"
+  }
+
+  /* Additionally/optionally a little message could be displayed
+
+  header:before {
+    display: block;
+    content: "Thank your for printing our content at www.getlivesmart.com.";
+    border: 1px solid #bbb;
+    font-style: italic;
+  }
+
+  */
+
+  /* Separate blockquotes a little bit from the rest */
+
+  blockquote {
+    font-size: 13pt;
+    font-style: italic;
+  }
+
+  /* By default links are blue. For optimal legibility change them to black */
+
+  p a {
+    color: #000;
+  }
+
+  /* The Sidebar is placed under the content automatically. To distinguish it from the rest a border and a gap is set before */
+
+  aside {
+    page-break-before: always;
+
+  }
+
+  .print-page-break	{
+    display: block;
+    page-break-before: always;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    word-wrap: break-word;
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript"]:after {
+    content: "";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+}

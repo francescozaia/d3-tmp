@@ -2,4 +2,4 @@
 /build_dev
 /build_prod
 /bower_components
-/chart*.html
+*.pdf

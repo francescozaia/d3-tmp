@@ -13,7 +13,8 @@
   <script src="js/libs/modernizr.min.js"></script>
 
   <link href="./css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
-  <link href="./css/style.min.css" media="screen" rel="stylesheet">
+  <link href="./css/style.min.css" rel="stylesheet">
+  <link href="./css/print.min.css" rel="stylesheet">
   <!--[if lt IE 9]><script src="js/libs/respond.min.js"></script><![endif]-->
     <!--[if gte IE 9]>
     <style type="text/css">
@@ -26,7 +27,7 @@
   <div class="body_wrap">
 
     <header>
-      <div class="tooltip top animated" role="tooltip">
+      <div class="tooltip top animated print-hidden" role="tooltip">
         <div class="tooltip-arrow"></div>
         <div class="tooltip-inner">
           Some tooltip text!
@@ -35,7 +36,7 @@
       <!-- container-->
       <div class="container">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-8 print-reverse">
             <!-- content-->
             <div class="content" role="main">
 
@@ -51,6 +52,8 @@
                   </div>
                 </div>
                 <!--/post item-->
+
+                <div class="print-page-break"><!----></div>
 
                 <!-- post item-->
                 <div class="post-item boxed">
@@ -137,6 +140,8 @@
                 </div>
                 <!--/post item-->
 
+                <div class="print-page-break"><!----></div>
+
                 <!-- post item-->
                 <div class="post-item boxed">
                   <div class="inner">
@@ -193,6 +198,8 @@
               </div>
               <!--/ postlist-->
 
+              <div class="print-page-break"><!----></div>
+
               <!-- post comments -->
               <div class="comment-list clearfix" id="comments">
                 <h2>Doctor recommendations:</h2>
@@ -222,7 +229,7 @@
             <!--/ content-->
           </div>
 
-          <div class="col-sm-4">
+          <aside class="col-sm-4 print-reverse">
             <!-- sidebar-->
             <div class="sidebar">
 
@@ -242,7 +249,7 @@
               <!--/latest stories -->
 
               <!-- widget Accordion -->
-              <div class="widget-container widget-categories widget-accordion">
+              <div class="widget-container widget-categories widget-accordion print-hidden">
                 <h3 class="widget-title">Blog Categories</h3>
                 <div id="categories">
                   <!-- category1 -->
@@ -356,13 +363,13 @@
 
             </div>
             <!--/ sidebar-->
-          </div>
+          </aside>
         </div>
       </div>
     </header>
 
     <!-- Widget Testimonials -->
-    <div class="widget-full-width boxed">
+    <section class="widget-full-width boxed print-hidden">
       <!-- container-->
       <div class="container">
         <!-- row-->
@@ -394,11 +401,11 @@
         <!--/ row-->
       </div>
       <!--/ container-->
-    </div>
+    </section>
     <!--/ Widget Testimonials -->
 
     <!-- Widget Partners -->
-    <div class="widget-full-width boxed">
+    <section class="widget-full-width boxed print-hidden">
       <!-- container-->
       <div class="container">
         <!-- row-->
@@ -421,7 +428,7 @@
         <!--/ row-->
       </div>
       <!--/ container-->
-    </div>
+    </section>
     <!--/ Widget Partners -->
 
     <footer>

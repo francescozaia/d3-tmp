@@ -3350,3 +3350,6 @@ td.ui-datepicker-other-month span {
 .carousel-red .carousel-indicators {
   border-left: 1px solid #ec8d73;
   border-right: 1px solid #ec8d73; }
+
+.print-page-break {
+  display: none; }
