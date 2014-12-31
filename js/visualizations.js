@@ -2,8 +2,8 @@ $(function() {
 
   var littleChartBuilder = (function() {
 
-    var width,
-      height,
+    var barWidth,
+      barHeight,
       leftPadding,
       rightPadding,
       topPadding,
@@ -20,8 +20,8 @@ $(function() {
 
       element = _element;
 
-      width = settings.width;
-      height = settings.height;
+      barWidth = settings.barWidth;
+      barHeight = settings.barHeight;
 
       leftPadding = settings.leftPadding;
       rightPadding = settings.rightPadding;
@@ -35,22 +35,19 @@ $(function() {
       units = _data.markers[chartID].units;
       range = _data.markers[chartID].risk_range;
 
-      /**
-       * getting the max value from all the risk bands
-       * to set the domain
-       */
+      // getting the max value from all the risk bands to set the domain
       var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));
 
       scale = d3.scale.linear();
       scale.domain([0, maxRange]);
-      scale.range([0, width]);
+      scale.range([0, barWidth]);
 
       chart = d3.select(element)
         .append("svg:svg")
-        .attr('width', width)
-        .attr('height', height);
+        .attr('width', barWidth + leftPadding + rightPadding)
+        .attr('height', barHeight + topPadding + bottomPadding);
 
-      // _drawAxis();
+      _drawAxis();
 
       _drawBands();
 
@@ -58,23 +55,32 @@ $(function() {
     }
 
     var _drawAxis = function() {
-      var x = scale.range([0, width]);
+
+      var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));
+      var axisScale = d3.scale.linear();
+      axisScale.domain([0, maxRange]);
+      var xRange = axisScale.range([0, barWidth -2]);
+
+      // var xRange = scale.range([0, barWidth -2]); why all that?
+
+      var commasFormatter = d3.format(",.0f")
 
       var xAxis = d3.svg.axis()
-        .scale(x)
-        .tickValues(x.domain())
+        .scale(xRange)
+        .ticks(5)
+        .tickFormat(function(d) { return commasFormatter(d) + ""; })
         .orient("bottom");
 
-      chart.append("svg")
-        .attr("width", "1")
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(0," + 20 + ")");
 
       chart.append("g")
-        .attr("class", "x axis")
+        .attr("height", 0)
+        .attr("class", "xaxis axis")
         .call(xAxis)
-        .attr("transform", "translate(0," + 20 + ")");
+        .attr("transform", "translate(" + leftPadding + ", " + (barHeight + topPadding + 1) + ")")
+
+      chart.selectAll(".xaxis text")  // select all the text elements for the xaxis
+        .attr("transform", "translate(-5,5)rotate(-30)");
+
     }
 
     var _drawBands = function() {
@@ -84,8 +90,7 @@ $(function() {
         var value_zero = parseInt(b.range_band[0], 10);
         var value_uno = parseInt(b.range_band[1], 10);
 
-        var random = Math.random().toString(36).replace(
-          /[^a-z]+/g, '').substr(0, 5);
+        var random = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
 
         var gradient = chart.append("svg:defs")
           .append("svg:linearGradient")
@@ -109,15 +114,15 @@ $(function() {
         chart.append("svg:rect")
           .attr("class", "rangeBand")
           .attr("x", Math.floor(scale(value_zero)))
-          .attr("width", Math.floor(scale(value_uno) - 1) -
-            Math.floor(scale(value_zero)))
-          .attr("y", 24) //to make space for the cursor
+          .attr("width", Math.floor(scale(value_uno) - 1) - Math.floor(scale(value_zero)))
+          .attr("y", barHeight)
           .attr("height", 0)
           .attr("fill", "url(#gradient" + random + ")")
+          .attr("transform", "translate(" + leftPadding + ", " + topPadding + ")")
           .transition()
           .duration(600)
-          .attr("height", 16)
-          .attr("y", 4)
+          .attr("height", barHeight)
+          .attr("y", 0)
 
       });
 
@@ -125,34 +130,36 @@ $(function() {
 
     var _drawMarker = function() {
 
+      var _radius = 16;
+      var _radiusHover = 16;
+
       var marker = chart.append("circle")
         .attr("class", "dot")
-        .attr("data-title", "<p class='first'><span class='big'>" +
-          data.test_results[0].test_result.value + "</span> " + data.units +
-          "</p><p class='second'>" + data.marker_code + "</p>")
+        .attr("data-title", "<p class='first'><span class='big'>" + data.test_results[0].test_result.value + "</span> " + data.units + "</p><p class='second'>" + data.marker_code + "</p>")
         .attr("r", 0)
         .attr("opacity", 0)
         .attr("cx", function(d) {
           var x = scale(data.test_results[0].test_result.value)
           return x;
         })
-        .attr("cy", 12)
+        .attr("cy", barHeight/2)
         .attr("stroke", "#FFF")
         .attr("stroke-width", 2)
         .style("fill", "#333")
-        .style("fill-opacity", .6)
+        .style("fill-opacity", .4)
+        .attr("transform", "translate(" + leftPadding + ", " + topPadding + ")")
         .transition()
         .duration(1000)
         .delay(600)
-        .attr("r", 6)
-        .attr("opacity", 1)
+        .attr("r", _radius)
+        .attr("opacity", 1);
 
       $(marker[0]).on("mouseover", function(d) {
-        d3.select(this).transition().duration(200).attr("r", 11);
+        d3.select(this).transition().duration(200).attr("r", _radiusHover);
         _showTooltip(this);
       });
       $(marker[0]).on("mouseout", function(d) {
-        d3.select(this).transition().duration(200).attr("r", 6);
+        d3.select(this).transition().duration(200).attr("r", _radius);
         _hideTooltip(this);
       });
       $(marker[0]).on("click", function(d) {
@@ -161,18 +168,20 @@ $(function() {
     }
 
     var _showTooltip = function(element) {
-      var posX = $(element).offset().left - 33,
-        posY = $(element).offset().top - 94,
-        txt = $(element).data("title");
+      var txt = $(element).data("title");
       $(".tooltip").find(".tooltip-inner").html(txt);
-      $(".tooltip").css("position", "absolute").css("top", posY +
-        "px").css("left", posX + "px");
+
+      var posXs =$(".tooltip").find(".tooltip-inner").width()/2 - 9;
+
+      var posX = parseInt( $(element).offset().left - posXs, 10),
+        posY = parseInt( $(element).offset().top - 90, 10);
+
+      $(".tooltip").css("position", "absolute").css("top", posY + "px").css("left", posX + "px");
       $(".tooltip").removeClass("fadeOut");
       $(".tooltip").addClass("bounceIn");
     }
     var _hideTooltip = function(element) {
-      $(".tooltip").css("position", "absolute").css("left", -1000 +
-        "px");
+      $(".tooltip").css("position", "absolute").css("left", -1000 + "px");
       $(".tooltip").removeClass("bounceIn");
       $(".tooltip").addClass("fadeOut");
     }
@@ -191,20 +200,22 @@ $(function() {
 
   $.fn.visualizeRisk = function(data, options) {
 
+    var _options = options ? options : {};
+
     // Extending defaults.
     var settings = $.extend({
-      height: 36,
-      width: 160,
-      leftPadding: 50,
-      rightPadding: 50,
-      topPadding: 0,
-      bottomPadding: 50,
+      barHeight: 16,
+      barWidth: 160,
+      leftPadding: 16,
+      rightPadding: 16,
+      topPadding: 16,
+      bottomPadding: 32,
       lineColours: {
         optimal: "#A7C520",
         medium: "#ebc85e",
         high: "#e87352"
       }
-    }, options);
+    }, _options);
 
     var elements = $(this);
     for (var i = 0; i < elements.length; i += 1) {

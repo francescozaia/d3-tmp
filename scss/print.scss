@@ -3,12 +3,10 @@
 /***************/
 
 @media print {
+
   body {
     background: none;
     background-color: none;
-  }
-  .body_wrap {
-    background-image: none;
   }
 
   q {
@@ -58,15 +56,6 @@
     margin-top: 25px;
   }
 
-  .print-reverse {
-    &.col-sm-8 {
-      float:right;
-    }
-    &.col-sm-4 {
-      float:left;
-    }
-  }
-
   /* Show printer-frindly logo. */
 
   header {
@@ -77,20 +66,14 @@
 
   /* Display the URL of the site so that the user knows where the printout came from */
 
-  header:after {
-    display: block; content: "Thank your for printing our content at www.getlivesmart.com"
-  }
-
-  /* Additionally/optionally a little message could be displayed
-
   header:before {
     display: block;
-    content: "Thank your for printing our content at www.getlivesmart.com.";
+    content: "Thank your for printing our content at www.getlivesmart.com";
     border: 1px solid #bbb;
     font-style: italic;
+    text-align: center;
+    padding: 20px;
   }
-
-  */
 
   /* Separate blockquotes a little bit from the rest */
 
@@ -107,9 +90,9 @@
 
   /* The Sidebar is placed under the content automatically. To distinguish it from the rest a border and a gap is set before */
 
-  aside {
-    page-break-before: always;
 
+  * {
+    overflow: visible !important; // forces a built-in PDF rendering gotcha in WebKit so that images never span 2 pages
   }
 
   .print-page-break	{
@@ -117,6 +100,7 @@
     page-break-before: always;
   }
 
+  /*
   a[href]:after {
     content: " (" attr(href) ")";
     word-wrap: break-word;
@@ -130,4 +114,5 @@
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
+  */
 }

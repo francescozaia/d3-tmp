@@ -1,11 +1,30 @@
-/* Carousel */
 $(function() {
 
-  /* Tooltips activator */
-  //$('[data-toggle="tooltip"]').tooltip();
+  // Tooltips activator
+  // $('[data-toggle="tooltip"]').tooltip();
 
-  /* Smooth scrolling */
-  /* interferes with carousel
+  // Remove outline in IE
+  $("a, input, textarea").attr("hideFocus", "true").css("outline", "none");
+
+  // Add gradient to IE
+  setTimeout(function () {
+    $("body").addClass("gradient");
+  }, 0);
+
+  // buttons
+  $(".btn").hover(function(){
+    $(this).stop().animate({"opacity": .8});
+  },function(){
+    $(this).stop().animate({"opacity": 1});
+  });
+  $('a.btn, span.btn').on('mousedown', function(){
+    $(this).addClass('active')
+  });
+  $('a.btn, span.btn').on('mouseup mouseout', function(){
+    $(this).removeClass('active')
+  });
+
+  // Smooth scrolling
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(
         /^\//, '') && location.hostname == this.hostname) {
@@ -20,21 +39,17 @@ $(function() {
       }
     }
   });
-  */
 
   /*********************/
   /* On data JSON load */
   /*********************/
-
   d3.json("./js/data.json", function(error, data) {
 
     if (error) {
-      return console.warn(error); // TODO handle errors
+      return console.warn("Error retrieving JSON: " + error); // TODO handle errors
     }
 
-    var options = {};
-
-    $(".chart").visualizeRisk(data, options);
+    $(".chart").visualizeRisk(data);
   });
 
 });

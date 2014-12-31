@@ -14,7 +14,7 @@
     "test_results": [{
       "test_result": {
         "id": 2998849,
-        "value": 155,
+        "value": 140,
         "date": "2014-12-19"
       }
     }],
@@ -56,9 +56,9 @@
     }]
   }, {
     "id": 2,
-    "name": "Nutri",
+    "name": "Activity Level",
     "description": "",
-    "marker_code": "",
+    "marker_code": "run",
     "long_description": "",
     "advice": "",
     "units": "pounds",
@@ -66,7 +66,7 @@
     "test_results": [{
       "test_result": {
         "id": 2998849,
-        "value": 45,
+        "value": 20,
         "date": "2014-12-19"
       }
     }],
@@ -80,5 +80,28 @@
       "value": "high",
       "range_band": [40, 60]
     }]
-  }]
+  }, {
+    "id": 3,
+    "name": "Smnoking",
+    "description": "",
+    "marker_code": "cigarettes",
+    "long_description": "",
+    "advice": "",
+    "units": "cigarettes",
+    "test_dates": ["2014-12-19"],
+    "test_results": [{
+      "test_result": {
+        "id": 2998849,
+        "value": 4,
+        "date": "2014-12-19"
+      }
+    }],
+    "risk_range": [{
+      "value": "medium",
+      "range_band": [0, 6]
+    }, {
+      "value": "high",
+      "range_band": [6, 40]
+    }]
+    }]
 }

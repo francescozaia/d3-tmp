@@ -6,9 +6,6 @@
     background: none;
     background-color: none; }
 
-  .body_wrap {
-    background-image: none; }
-
   q {
     quotes: none; }
     q:before, q:after {
@@ -40,11 +37,6 @@
     font-size: 14pt;
     margin-top: 25px; }
 
-  .print-reverse.col-sm-8 {
-    float: right; }
-  .print-reverse.col-sm-4 {
-    float: left; }
-
   /* Show printer-frindly logo. */
   header {
     padding: 0; }
@@ -53,20 +45,14 @@
     display: block; }
 
   /* Display the URL of the site so that the user knows where the printout came from */
-  header:after {
-    display: block;
-    content: "Thank your for printing our content at www.getlivesmart.com"; }
-
-  /* Additionally/optionally a little message could be displayed
-
   header:before {
     display: block;
-    content: "Thank your for printing our content at www.getlivesmart.com.";
+    content: "Thank your for printing our content at www.getlivesmart.com";
     border: 1px solid #bbb;
     font-style: italic;
-  }
+    text-align: center;
+    padding: 20px; }
 
-  */
   /* Separate blockquotes a little bit from the rest */
   blockquote {
     font-size: 13pt;
@@ -77,20 +63,25 @@
     color: #000; }
 
   /* The Sidebar is placed under the content automatically. To distinguish it from the rest a border and a gap is set before */
-  aside {
-    page-break-before: always; }
+  * {
+    overflow: visible !important; }
 
   .print-page-break {
     display: block;
     page-break-before: always; }
 
+  /*
   a[href]:after {
     content: " (" attr(href) ")";
-    word-wrap: break-word; }
+    word-wrap: break-word;
+  }
 
-  a[href^="#"]:after, a[href^="javascript"]:after {
-    content: ""; }
+  a[href^="#"]:after,
+  a[href^="javascript"]:after {
+    content: "";
+  }
 
   abbr[title]:after {
-    content: " (" attr(title) ")"; }
- }
+    content: " (" attr(title) ")";
+  }
+  */ }

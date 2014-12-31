@@ -9,529 +9,574 @@
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Live Smart</title>
-  <!-- main JS libs -->
-  <script src="js/libs/modernizr.min.js"></script>
 
-  <link href="./css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+
+
+  <link href="./css/libs/bootstrap.min.css" media="screen" rel="stylesheet">
+  <link href="./css/libs/animate.css" media="screen" rel="stylesheet">
   <link href="./css/style.min.css" rel="stylesheet">
-  <link href="./css/print.min.css" rel="stylesheet">
+  <link href="./css/print.min.css" media="print" rel="stylesheet">
   <!--[if lt IE 9]><script src="js/libs/respond.min.js"></script><![endif]-->
     <!--[if gte IE 9]>
     <style type="text/css">
     .gradient {filter: none !important;}
-  </style>
+    </style>
   <![endif]-->
 </head>
+
 <body>
 
-  <div class="body_wrap">
-
-    <header>
-      <div class="tooltip top animated print-hidden" role="tooltip">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-inner">
-          Some tooltip text!
-        </div>
-      </div>
-      <!-- container-->
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 print-reverse">
-            <!-- content-->
-            <div class="content" role="main">
-
-              <!-- post list -->
-              <div class="postlist">
-                <!-- post item-->
-                <div class="post-item boxed">
-                  <div class="inner">
-                    <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Your Summary</a></h1></div>
-                    <div class="post-desc">
-                      <p>Big chart here</p>
-                    </div>
-                  </div>
-                </div>
-                <!--/post item-->
-
-                <div class="print-page-break"><!----></div>
-
-                <!-- post item-->
-                <div class="post-item boxed">
-                  <div class="inner">
-                    <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Weight, Nutrition &amp; lifestyle</a></h1></div>
-                    <div class="post-intro-text">
-                      <p>While vital signs often do not give as much specific information as blood tests, they are commonly tracked as macroscopic measures of health.</p>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Weight</h3>
-                        <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
-                      </div>
-                      <div class="col-sm-7 col-chart">
-                        <h5>Weight</h5>
-                        <div class="post-chart progressbar progressbar--chart">
-                          <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                            <div id="chart-0" class="chart chart-weight">
-                                <!-- chart goes here -->
-                            </div>
-                            <div class="chart-inner">weight</div>
-                          </div>
-                        </div>
-                        <h5>Body mass</h5>
-                        <div class="post-chart progressbar progressbar--chart">
-                          <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                            <div id="chart-1" class="chart chart-body-mass">
-                              <!-- chart goes here -->
-                            </div>
-                            <div class="chart-inner">body mass</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Nutrition</h3>
-                        <p>5 a day, Salt, Saturated fat</p>
-                      </div>
-                      <div class="col-sm-7 col-chart">
-                        <h5>Weight</h5>
-                        <div class="post-chart progressbar progressbar--chart">
-                          <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                            <div id="chart-2" class="chart chart-body-mass">
-                              <!-- chart goes here -->
-                            </div>
-                            <div class="chart-inner">body mass</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Activity level</h3>
-                        <p>Good is 30 mins a day for 5 days a week.</p>
-                      </div>
-                      <div class="col-sm-7 col-chart">
-                        <h5>Weight</h5>
-                        Todo
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Smoking</h3>
-                        <p>Todo</p>
-                      </div>
-                      <div class="col-sm-5">
-                        <h5>Weight</h5>
-                        Todo
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Alcohol</h3>
-                        <p>Todo</p>
-                      </div>
-                      <div class="col-sm-7 col-chart">
-                        <h5>Weight</h5>
-                        Todo
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/post item-->
-
-                <div class="print-page-break"><!----></div>
-
-                <!-- post item-->
-                <div class="post-item boxed">
-                  <div class="inner">
-                    <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Cardiovascular Health</a></h1></div>
-                    <div class="post-intro-text">
-                      <p>Your cardiovascular system is made up of your heart and blood vessels, and is responsible for transporting oxygen, nutrients, hormones, and waste products throughout the body. A healthy cardiovascular system ensures a good balance of nutrients and optimal brain and body function.</p>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Lipid Panel</h3>
-                        <p>The basic lipid panel includes cholesterol levels (both the good HDL and
-                          the bad LDL and other non-HDL cholesterols), as well as triglycerides.
-                          Elevated levels of triglycerides or non-HDL cholesterol can increase your
-                          risk of cardiovascular disease, which can lead to heart attacks and
-                          strokes. Higher levels of artery-clearing HDL, however, can reduce this
-                          risk.</p>
-                      </div>
-                      <div class="col-sm-7 col-chart">
-                        <h5>Weight</h5>
-                        <div class="post-chart progressbar progressbar--chart">
-                          <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                            <div id="chart-0" class="chart chart-weight">
-                              <!-- chart goes here -->
-                            </div>
-                            <div class="chart-inner">weight</div>
-                          </div>
-                        </div>
-                        <h5>Body mass</h5>
-                        <div class="post-chart progressbar progressbar--chart">
-                          <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                            <div id="chart-1" class="chart chart-body-mass">
-                              <!-- chart goes here -->
-                            </div>
-                            <div class="chart-inner">body mass</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <h3>Alcohol</h3>
-                        <p>Todo</p>
-                      </div>
-                      <div class="col-sm-7 col-chart">
-                        <h5>Weight</h5>
-                        Todo
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--/post item-->
-
-              </div>
-              <!--/ postlist-->
-
-              <div class="print-page-break"><!----></div>
-
-              <!-- post comments -->
-              <div class="comment-list clearfix" id="comments">
-                <h2>Doctor recommendations:</h2>
-                <ol>
-                  <li class="comment first">
-                    <div class="comment-body boxed">
-                      <div class="comment-arrow"></div>
-                      <div class="comment-avatar">
-                        <div class="avatar"><img src="images/temp/avatar3.png" alt=""></div>
-                      </div>
-                      <div class="comment-text">
-                        <div class="comment-author clearfix">
-                          <a href="#" class="link-author" hidefocus="true" style="outline: none;">MARK ST’ MAURICE</a>
-                        </div>
-                        <div class="comment-entry">
-                          Britain’s phone hacking claimed another casualty on Monday when Yates, the onedeputy of London’s Metropolitan Police, resigned a day after the country’s top police officer quit and Rebekah Brooks, the former chief executive of
-                        </div>
-                      </div>
-                      <div class="clear"></div>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-              <!--/ post comments -->
-
-            </div>
-            <!--/ content-->
-          </div>
-
-          <aside class="col-sm-4 print-reverse">
-            <!-- sidebar-->
-            <div class="sidebar">
-
-
-              <!-- latest stories -->
-              <div class="widget-container widget_recent_entries boxed">
-                <h3 class="widget-title">Francesco Zaia</h3>
-                <div class="inner">
-                  <ul>
-                    <li class="clearfix">
-                      <a href="#" class="widget-thumb" hidefocus="true" style="outline: none;"><img src="images/temp/latest1.png" alt=""></a>
-                      <a href="#" class="post-title" hidefocus="true" style="outline: none;">Lorem ipsum</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!--/latest stories -->
-
-              <!-- widget Accordion -->
-              <div class="widget-container widget-categories widget-accordion print-hidden">
-                <h3 class="widget-title">Blog Categories</h3>
-                <div id="categories">
-                  <!-- category1 -->
-                  <div class="panel">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#categories" href="#collapse1" hidefocus="true" style="outline: none;"><span>Settings</span></a>
-                    </div>
-                    <div id="collapse1" class="accordion-body collapse">
-                      <div class="accordion-inner">
-                        <ul>
-                          <li class="first"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                          <li><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                          <li class="last"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <!--/ category1 -->
-
-                  <!-- category2 -->
-                  <div class="panel">
-                    <div class="accordion-heading">
-                      <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#categories" href="#collapse2" hidefocus="true" style="outline: none;"><span>About</span></a>
-                    </div>
-                    <div id="collapse2" class="accordion-body collapse">
-                      <div class="accordion-inner">
-                        <ul>
-                          <li class="first"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                          <li><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                          <li class="last"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <!--/ category2 -->
-
-                </div>
-              </div>
-              <!--/ widget Accordion -->
-
-              <!-- widget text-->
-              <div class="widget-container widget_text boxed">
-                <h3 class="widget-title">Demographics</h3>
-                <div class="inner">
-                  <ul class="clearfix">
-                    <li class="follow-item first">
-                      <div class="follow-counter"><strong>M</strong><em>&nbsp;</em></div>
-                    </li>
-                    <li class="follow-item blue">
-                      <div class="follow-counter"><strong>40</strong><em>years</em></div>
-                    </li>
-                    <li class="follow-item yellow">
-                      <div class="follow-counter"><strong>172</strong><em>cm</em></div>
-                    </li>
-                    <li class="follow-item red last">
-                      <div class="follow-counter"><strong>65</strong><em>kg</em></div>
-                    </li>
-                  </ul>
-                  <div class="textwidget">
-                    <h3 class="textwidget-title">Vitals</h3>
-                    <ul>
-                      <li><strong>BMI: </strong>22.7</li>
-                    </ul>
-                    <h3 class="textwidget-title">Ethnicity</h3>
-                    <ul>
-                      <li><strong>Mother: </strong>White/Caucasian</li>
-                      <li><strong>Father: </strong>White/Caucasian</li>
-                    </ul>
-                    <h3 class="textwidget-title">Family</h3>
-                    <ul>
-                      <li><strong>Status: </strong>Domestic Partner</li>
-                      <li><strong>Children: </strong>2 sons</li>
-                    </ul>
-                  </div>
-                </div>
-                <h3 class="widget-title">Conditions</h3>
-                <div class="inner">
-                  <p>Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos</p>
-                  <div class="textwidget">
-                    <h3 class="textwidget-title">Chronic Conditions</h3>
-                    <ul>
-                      <li>Ashma</li>
-                    </ul>
-                    <h3 class="textwidget-title">Surgeries &amp; Hospitalizations</h3>
-                    <ul>
-                      <li>none</li>
-                    </ul>
-                    <h3 class="textwidget-title">Accidents</h3>
-                    <ul>
-                      <li>none</li>
-                    </ul>
-                  </div>
-                </div>
-                <h3 class="widget-title">Family History</h3>
-                <div class="inner">
-                  <ul>
-                    <li><strong>Father: </strong>Todo</li>
-                    <li><strong>Mother: </strong>Todo</li>
-                  </ul>
-                </div>
-                <h3 class="widget-title">Lifestyle</h3>
-                <div class="inner">
-                  <div class="textwidget">
-                    <ul>
-                      <li><strong>Todo: </strong>Todo</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- /widget text-->
-
-            </div>
-            <!--/ sidebar-->
-          </aside>
-        </div>
-      </div>
-    </header>
-
-    <!-- Widget Testimonials -->
-    <section class="widget-full-width boxed print-hidden">
-      <!-- container-->
-      <div class="container">
-        <!-- row-->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="testimonials">
-              <ul id="testimonials-1">
-                <li>
-                  <div class="testimonials-text"><p>About the author: Brent is a writer who has a love for creativity and enjoys experimenting with various techniques in print &amp; web writing. Check out his tutorials and articles.</p></div>
-                  <div class="testimonials-author"><a href="#"><span>BRENT JARVIS</span>, author</a></div>
-                  <div class="testimonials-avatar"><a href="#"><img src="images/temp/avatar4.png" alt="" /></a></div>
-                </li>
-                <li>
-                  <div class="testimonials-text"><p>About the author: Lene Marlin made her Norwegian debut on 12 October 1998, with the single "Unforgivable Sinner". It was the fastest selling single in Norwegian music history.</p></div>
-                  <div class="testimonials-author"><a href="#"><span>Lene Marlin</span>, singer</a></div>
-                  <div class="testimonials-avatar"><a href="#"><img src="images/temp/avatar5.png" alt="" /></a></div>
-                </li>
-                <li>
-                  <div class="testimonials-text"><p>About the author: Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nullam in dui maurisiva mus hendrerit arcu sed erat mole stie vehi cula. Sed auctor neque eu tellus.</p></div>
-                  <div class="testimonials-author"><a href="#"><span>John Doe</span>, artist</a></div>
-                  <div class="testimonials-avatar"><a href="#"><img src="images/temp/avatar6.png" alt="" /></a></div>
-                </li>
-              </ul>
-              <a id="testimonials-prev-1" class="prev" href="#">prev</a>
-              <a id="testimonials-next-1" class="next" href="#">next</a>
-            </div>
-          </div>
-        </div>
-        <!--/ row-->
-      </div>
-      <!--/ container-->
-    </section>
-    <!--/ Widget Testimonials -->
-
-    <!-- Widget Partners -->
-    <section class="widget-full-width boxed print-hidden">
-      <!-- container-->
-      <div class="container">
-        <!-- row-->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="partners">
-              <h3 class="partners-title">Technologies we use</h3>
-              <ul id="partners">
-                <li><a href="#"><img src="images/temp/partner1.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/temp/partner2.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/temp/partner3.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/temp/partner4.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/temp/partner5.png" alt="" /></a></li>
-              </ul>
-              <a id="partners-prev" class="prev" href="#">prev</a>
-              <a id="partners-next" class="next" href="#">next</a>
-            </div>
-          </div>
-        </div>
-        <!--/ row-->
-      </div>
-      <!--/ container-->
-    </section>
-    <!--/ Widget Partners -->
-
-    <footer>
-
-      <!-- Footer Style 2 -->
-      <div class="footer style2 boxed" style="margin-bottom: 0">
-        <!-- container-->
-        <div class="container">
-          <!-- row -->
-          <div class="row">
-            <div class="col-xs-6 col-sm-2">
-              <div class="widget-container widget_nav_menu">
-                <h3 class="widget-title"><span>VEHICLES</span></h3>
-                <ul>
-                  <li><a href="#"><span>Motorbikes</span></a></li>
-                  <li><a href="#"><span>Compacts</span></a></li>
-                  <li><a href="#"><span>Sedans</span></a></li>
-                  <li><a href="#"><span>4x4 SUVs</span></a></li>
-                  <li><a href="#"><span>Pickups</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-              <div class="widget-container widget_nav_menu">
-                <h3 class="widget-title"><span>SERVICES</span></h3>
-                <ul>
-                  <li><a href="#"><span>Buy a car</span></a></li>
-                  <li><a href="#"><span>Sell your Car</span></a></li>
-                  <li><a href="#"><span>Buy Back</span></a></li>
-                  <li><a href="#"><span>Repair Shop</span></a></li>
-                  <li><a href="#"><span>Compacts</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-2">
-              <div class="widget-container widget_nav_menu">
-                <h3 class="widget-title"><span>Privacy</span></h3>
-                <ul>
-                  <li><a href="#"><span>Terms &amp; Conditions</span></a></li>
-                  <li><a href="#"><span>Privacy Statement</span></a></li>
-                  <li><a href="#"><span>F.A.Q.s</span></a></li>
-                  <li><a href="#"><span>Support</span></a></li>
-                  <li><a href="#"><span>Confidentiality</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-              <div class="widget-container widget-contact">
-                <h3 class="widget-title"><span>OUR SHOWROOM</span></h3>
-                <ul>
-                  <li><span>21 Sunset Blvd, Los Angeles</span></li>
-                  <li><span>California, 90453</span></li>
-                  <li><span>Mon - Fri: 9AM - 7 PM</span></li>
-                  <li><span>Sat -  9AM - 2 PM</span></li>
-                  <li><span>Sun - Closed</span></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="clearfix visible-xs"></div>
-
-            <div class="col-xs-12 col-sm-3">
-              <div class="widget-container widget-map">
-                <div id="map" class="map"></div>
-
-              </div>
-            </div>
-          </div>
-          <!--/ row -->
-        </div>
-        <!--/ container-->
-      </div>
-      <!--/ Footer Style 2 -->
-    </footer>
+  <!-- Tooltip -->
+  <div class="tooltip top animated print-hidden" role="tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-inner"><!-- --></div>
   </div>
+  <!--/ Tooltip -->
 
+  <!-- Header -->
+  <header>
+    <nav class="navbar navbar-livesmart" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" style="padding-top:5px;" href="/"><img src="//cdn.shopify.com/s/files/1/0662/2703/t/2/assets/lsmot.jpg?3464" alt="LiveSmart"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-nav"></div>
+      </div>
+    </nav>
+  </header>
+  <!--/ Header -->
+
+  <!-- Main Content -->
+  <section class="main-content container">
+
+    <div class="row">
+
+      <!-- userbar-->
+      <aside class="col-md-4 col-md-push-8">
+
+        <!-- sidebar -->
+        <div class="sidebar">
+
+          <!-- user title -->
+          <div class="widget-container widget_recent_entries boxed">
+            <h3 class="widget-title">Francesco Zaia</h3>
+            <div class="inner">
+              <ul>
+                <li class="clearfix">
+                  <a href="#" class="widget-thumb" hidefocus="true" style="outline: none;"><img src="images/temp/latest1.png" alt=""></a>
+                  <a href="#" class="post-title" hidefocus="true" style="outline: none;">Lorem ipsum</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/ user title -->
+
+          <!-- widget Accordion -->
+          <div class="widget-container widget-categories widget-accordion print-hidden">
+            <div id="categories">
+
+              <!-- category 1 -->
+              <div class="panel">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#categories" href="#collapse1" hidefocus="true" style="outline: none;"><span>Settings</span></a>
+                </div>
+                <div id="collapse1" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <ul>
+                      <li class="first"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
+                      <li><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
+                      <li class="last"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!--/ category 1 -->
+
+              <!-- category 2 -->
+              <div class="panel">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#categories" href="#collapse2" hidefocus="true" style="outline: none;"><span>About</span></a>
+                </div>
+                <div id="collapse2" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <ul>
+                      <li class="first"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
+                      <li><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
+                      <li class="last"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!--/ category 2 -->
+
+            </div>
+          </div>
+          <!--/ widget Accordion -->
+
+          <!-- widget user details -->
+          <div class="widget-container widget_text boxed">
+
+            <!-- widget user details 1 -->
+            <h3 class="widget-title">Demographics</h3>
+            <div class="inner">
+              <ul class="clearfix">
+                <li class="follow-item first">
+                  <div class="follow-counter"><strong>M</strong><em>&nbsp;</em></div>
+                </li>
+                <li class="follow-item blue">
+                  <div class="follow-counter"><strong>40</strong><em>years</em></div>
+                </li>
+                <li class="follow-item yellow">
+                  <div class="follow-counter"><strong>172</strong><em>cm</em></div>
+                </li>
+                <li class="follow-item red last">
+                  <div class="follow-counter"><strong>65</strong><em>kg</em></div>
+                </li>
+              </ul>
+              <div class="textwidget">
+                <h3 class="textwidget-title">Vitals</h3>
+                <ul>
+                  <li><strong>BMI: </strong>22.7</li>
+                </ul>
+                <h3 class="textwidget-title">Ethnicity</h3>
+                <ul>
+                  <li><strong>Mother: </strong>White/Caucasian</li>
+                  <li><strong>Father: </strong>White/Caucasian</li>
+                </ul>
+                <h3 class="textwidget-title">Family</h3>
+                <ul>
+                  <li><strong>Status: </strong>Domestic Partner</li>
+                  <li><strong>Children: </strong>2 sons</li>
+                </ul>
+              </div>
+            </div>
+            <!--/ widget user details 1 -->
+
+            <!-- widget user details 2 -->
+            <h3 class="widget-title">Conditions</h3>
+            <div class="inner">
+              <p>Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos</p>
+              <div class="textwidget">
+                <h3 class="textwidget-title">Chronic Conditions</h3>
+                <ul>
+                  <li>Ashma</li>
+                </ul>
+                <h3 class="textwidget-title">Surgeries &amp; Hospitalizations</h3>
+                <ul>
+                  <li>none</li>
+                </ul>
+                <h3 class="textwidget-title">Accidents</h3>
+                <ul>
+                  <li>none</li>
+                </ul>
+              </div>
+            </div>
+            <!--/ widget user details 2 -->
+
+            <!-- widget user details 3 -->
+            <h3 class="widget-title">Family History</h3>
+            <div class="inner">
+              <ul>
+                <li><strong>Father: </strong>Todo</li>
+                <li><strong>Mother: </strong>Todo</li>
+              </ul>
+            </div>
+            <!--/ widget user details 3 -->
+
+            <!-- widget user details 4 -->
+            <h3 class="widget-title">Lifestyle</h3>
+            <div class="inner">
+              <div class="textwidget">
+                <ul>
+                  <li><strong>Todo: </strong>Todo</li>
+                </ul>
+              </div>
+            </div>
+            <!--/ widget user details 4 -->
+
+          </div>
+          <!--/ widget user details -->
+
+        </div>
+        <!--/ sidebar-->
+
+      </aside>
+      <!--/ userbar-->
+
+      <!-- main section -->
+      <article class="col-md-8 col-md-pull-4">
+        <!-- content-->
+        <div class="content" role="main">
+
+          <!-- post list -->
+          <div class="postlist" style="page-break-before: always;">
+
+            <!-- post item 1 -->
+            <div class="post-item boxed">
+              <div class="inner">
+                <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Your Summary</a></h1></div>
+                <div class="post-desc">
+                  <ul>
+                    <li><a href="#weight">Weight, Nutrition &amp; lifestyle</a></li>
+                    <li><a href="#cardiovascular">Cardiovascular Health</a></li>
+                    <li><a href="#doctor-recommendations">Doctor recommendations</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--/ post item 1 -->
+
+            <!-- post item 2 -->
+            <div id="weight" class="post-item boxed" style="page-break-before: always;">
+              <div class="inner">
+                <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Weight, Nutrition &amp; lifestyle</a></h1></div>
+                <div class="post-intro-text">
+                  <p>While vital signs often do not give as much specific information as blood tests, they are commonly tracked as macroscopic measures of health.</p>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-5">
+                    <h3>Weight</h3>
+                    <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
+                  </div>
+                  <div class="col-sm-7 col-chart">
+                    <h5>Weight</h5>
+                    <div class="post-chart progressbar progressbar--chart">
+                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                        <div id="chart-0" class="chart chart-weight">
+                          <!-- chart goes here -->
+                        </div>
+                        <div class="chart-inner">weight</div>
+                      </div>
+                    </div>
+                    <h5>Body mass</h5>
+                    <div class="post-chart progressbar progressbar--chart">
+                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                        <div id="chart-1" class="chart chart-body-mass">
+                          <!-- chart goes here -->
+                        </div>
+                        <div class="chart-inner">body mass</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-5">
+                    <h3>Nutrition</h3>
+                    <p>5 a day, Salt, Saturated fat</p>
+                  </div>
+                  <div class="col-sm-7 col-chart">
+                    <h5>Weight</h5>
+                    <div class="post-chart progressbar progressbar--chart">
+                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                        <div id="chart-1" class="chart chart-body-mass">
+                          <!-- chart goes here -->
+                        </div>
+                        <div class="chart-inner">body mass</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-5">
+                    <h3>Activity level</h3>
+                    <p>Good is 30 mins a day for 5 days a week.</p>
+                  </div>
+                  <div class="col-sm-7 col-chart">
+                    <h5>Activity Level</h5>
+                    <div class="post-chart progressbar progressbar--chart">
+                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                        <div id="chart-2" class="chart chart-body-mass">
+                          <!-- chart goes here -->
+                        </div>
+                        <div class="chart-inner">---</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-5">
+                    <h3>Smoking</h3>
+                    <p>Todo</p>
+                  </div>
+                  <div class="col-sm-7 col-chart">
+                    <h5>Smoking</h5>
+                    <div class="post-chart progressbar progressbar--chart">
+                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                        <div id="chart-3" class="chart chart-body-mass">
+                          <!-- chart goes here -->
+                        </div>
+                        <div class="chart-inner">---</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-5">
+                    <h3>Alcohol</h3>
+                    <p>Todo</p>
+                  </div>
+                  <div class="col-sm-7 col-chart">
+                    <h5>Alcohol</h5>
+                    <div class="post-chart progressbar progressbar--chart">
+                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                        <div id="chart-3" class="chart chart-body-mass">
+                          <!-- chart goes here -->
+                        </div>
+                        <div class="chart-inner">---</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ post item 2-->
+
+            <!-- post item 3 -->
+            <div id="cardiovascular" class="post-item boxed" style="page-break-before: always;">
+              <div class="inner">
+                <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Cardiovascular Health</a></h1></div>
+                <div class="post-intro-text">
+                  <p>Your cardiovascular system is made up of your heart and blood vessels, and is responsible for transporting oxygen, nutrients, hormones, and waste products throughout the body. A healthy cardiovascular system ensures a good balance of nutrients and optimal brain and body function.</p>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-5">
+                    <h3>Lipid Panel</h3>
+                    <p>The basic lipid panel includes cholesterol levels (both the good HDL and
+                      the bad LDL and other non-HDL cholesterols), as well as triglycerides.
+                      Elevated levels of triglycerides or non-HDL cholesterol can increase your
+                      risk of cardiovascular disease, which can lead to heart attacks and
+                      strokes. Higher levels of artery-clearing HDL, however, can reduce this
+                      risk.</p>
+                    </div>
+                    <div class="col-sm-7 col-chart">
+                      <h5>Weight</h5>
+                      <div class="post-chart progressbar progressbar--chart">
+                        <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                          <div id="chart-0" class="chart chart-weight">
+                            <!-- chart goes here -->
+                          </div>
+                          <div class="chart-inner">weight</div>
+                        </div>
+                      </div>
+                      <h5>Body mass</h5>
+                      <div class="post-chart progressbar progressbar--chart">
+                        <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
+                          <div id="chart-1" class="chart chart-body-mass">
+                            <!-- chart goes here -->
+                          </div>
+                          <div class="chart-inner">body mass</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <h3>Alcohol</h3>
+                      <p>Todo</p>
+                    </div>
+                    <div class="col-sm-7 col-chart">
+                      <h5>Weight</h5>
+                      Todo
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/ post item 3 -->
+
+            </div>
+            <!--/ postlist-->
+
+            <!-- post comments -->
+            <div id="doctor-recommendations" class="comment-list clearfix" id="comments" style="page-break-before: always;">
+              <h2>Doctor recommendations:</h2>
+              <ol>
+                <li class="comment first">
+                  <div class="comment-body boxed">
+                    <div class="comment-arrow"></div>
+                    <div class="comment-avatar">
+                      <div class="avatar"><img src="images/temp/avatar3.png" alt=""></div>
+                    </div>
+                    <div class="comment-text">
+                      <div class="comment-author clearfix">
+                        <a href="#" class="link-author" hidefocus="true" style="outline: none;">Dr. Gas</a>
+                      </div>
+                      <div class="comment-entry">
+                        Eat less, fatty! :)
+                      </div>
+                    </div>
+                    <div class="clear"></div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <!--/ post comments -->
+
+          </div>
+          <!--/ content-->
+
+        </article>
+      <!--/ main section -->
+
+    </div>
+
+  </section>
+  <!--/ Main Content -->
+
+  <!-- Widget Testimonials -->
+  <section id="testimonials" class="widget-full-width boxed print-hidden">
+    <!-- container-->
+    <div class="container">
+      <!-- row-->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="testimonials">
+            <ul id="testimonials-1">
+              <li>
+                <div class="testimonials-text"><p>Super cool blood test!</p></div>
+                <div class="testimonials-author"><a href="#"><span>Ricky Gervais</span>, doctor</a></div>
+                <div class="testimonials-avatar"><a href="#"><img src="images/temp/avatar4.png" alt="" /></a></div>
+              </li>
+              <li>
+                <div class="testimonials-text"><p>Prevents hair loss</p></div>
+                <div class="testimonials-author"><a href="#"><span>Karl Pilkington</span>, actor</a></div>
+                <div class="testimonials-avatar"><a href="#"><img src="images/temp/avatar5.png" alt="" /></a></div>
+              </li>
+              <li>
+                <div class="testimonials-text"><p>Been better before.</p></div>
+                <div class="testimonials-author"><a href="#"><span>Me</span>, artist</a></div>
+                <div class="testimonials-avatar"><a href="#"><img src="images/temp/avatar6.png" alt="" /></a></div>
+              </li>
+            </ul>
+            <a id="testimonials-prev-1" class="prev" href="#">prev</a>
+            <a id="testimonials-next-1" class="next" href="#">next</a>
+          </div>
+        </div>
+      </div>
+      <!--/ row-->
+    </div>
+    <!--/ container-->
+  </section>
+  <!--/ Widget Testimonials -->
+
+  <!-- Widget Partners -->
+  <section class="widget-full-width boxed print-hidden">
+    <!-- container-->
+    <div class="container">
+      <!-- row-->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="partners">
+            <h3 class="partners-title">Technologies we use</h3>
+            <ul id="partners">
+              <li><a href="#"><img src="images/temp/partner1.png" alt="" /></a></li>
+              <li><a href="#"><img src="images/temp/partner2.png" alt="" /></a></li>
+              <li><a href="#"><img src="images/temp/partner3.png" alt="" /></a></li>
+              <li><a href="#"><img src="images/temp/partner4.png" alt="" /></a></li>
+              <li><a href="#"><img src="images/temp/partner5.png" alt="" /></a></li>
+            </ul>
+            <a id="partners-prev" class="prev" href="#">prev</a>
+            <a id="partners-next" class="next" href="#">next</a>
+          </div>
+        </div>
+      </div>
+      <!--/ row-->
+    </div>
+    <!--/ container-->
+  </section>
+  <!--/ Widget Partners -->
+
+  <!-- Footer -->
+  <footer>
+
+    <!-- Footer Style 2 -->
+    <div class="footer style2 boxed" style="margin-bottom: 0">
+      <!-- container-->
+      <div class="container">
+        <!-- row -->
+        <div class="row">
+          <div class="col-xs-6 col-sm-2">
+            <div class="widget-container widget_nav_menu">
+              <h3 class="widget-title"><span>VEHICLES</span></h3>
+              <ul>
+                <li><a href="#"><span>Motorbikes</span></a></li>
+                <li><a href="#"><span>Compacts</span></a></li>
+                <li><a href="#"><span>Sedans</span></a></li>
+                <li><a href="#"><span>4x4 SUVs</span></a></li>
+                <li><a href="#"><span>Pickups</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+            <div class="widget-container widget_nav_menu">
+              <h3 class="widget-title"><span>SERVICES</span></h3>
+              <ul>
+                <li><a href="#"><span>Buy a car</span></a></li>
+                <li><a href="#"><span>Sell your Car</span></a></li>
+                <li><a href="#"><span>Buy Back</span></a></li>
+                <li><a href="#"><span>Repair Shop</span></a></li>
+                <li><a href="#"><span>Compacts</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-2">
+            <div class="widget-container widget_nav_menu">
+              <h3 class="widget-title"><span>Privacy</span></h3>
+              <ul>
+                <li><a href="#"><span>Terms &amp; Conditions</span></a></li>
+                <li><a href="#"><span>Privacy Statement</span></a></li>
+                <li><a href="#"><span>F.A.Q.s</span></a></li>
+                <li><a href="#"><span>Support</span></a></li>
+                <li><a href="#"><span>Confidentiality</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div class="widget-container widget-contact">
+              <h3 class="widget-title"><span>WHERE WE ARE</span></h3>
+              <ul>
+                <li><span>8, Pollen St.</span></li>
+                <li><span>London W1S 1NG</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="clearfix visible-xs"></div>
+
+          <div class="col-xs-12 col-sm-3">
+            <div class="widget-container widget-map">
+              <div id="map" class="map"></div>
+            </div>
+          </div>
+        </div>
+        <!--/ row -->
+      </div>
+      <!--/ container-->
+    </div>
+    <!--/ Footer Style 2 -->
+  </footer>
+  <!--/ Footer -->
 
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <!-- to validate -->
-  <script src="js/libs/jquery-ui.min.js"></script>
-  <!-- scripts  -->
-  <script src="js/general.js"></script>
+
   <!-- oneByone slider -->
-  <link href="css/libs/animate.css" media="screen" rel="stylesheet">
   <script src="js/libs/jquery.onecarousel.min.js"></script>
-  <!-- Lightbox prettyPhoto -->
-  <link href="css/libs/prettyPhoto.css" rel="stylesheet">
-  <script src="js/libs/jquery.prettyPhoto.js"></script>
-  <!-- Placeholders -->
-  <script src="js/libs/jquery.powerful-placeholder.min.js"></script>
   <!-- CarouFredSel  -->
   <script src="js/libs/jquery.carouFredSel-6.2.1-packed.js"></script>
 
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 
-  <!-- end -->
   <script src="./js/maps.js"></script>
   <script src="./js/theme.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/visualizations.js"></script>
+
 </body>
 </html>
