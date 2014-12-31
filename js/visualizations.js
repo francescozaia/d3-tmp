@@ -31,9 +31,9 @@ $(function() {
 
       // picking element id and selecting marker
       var chartID = parseInt(element.id.replace("chart-", ""), 10);
-      data = _data.markers[chartID];
-      units = _data.markers[chartID].units;
-      range = _data.markers[chartID].risk_range;
+      data = _data[chartID];
+      units = _data[chartID].units;
+      range = _data[chartID].risk_range;
 
       // getting the max value from all the risk bands to set the domain
       var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));

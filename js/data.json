@@ -1,8 +1,4 @@
-{
-  "id": 0,
-  "name": "Weight",
-  "description": "",
-  "markers": [{
+[{
     "id": 0,
     "name": "Weight",
     "description": "Your weight",
@@ -103,5 +99,4 @@
       "value": "high",
       "range_band": [6, 40]
     }]
-    }]
-}
+}]
