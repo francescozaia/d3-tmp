@@ -44,15 +44,18 @@
   header .print {
     display: block; }
 
-  /* Display the URL of the site so that the user knows where the printout came from */
+  /* Display the URL of the site so that the user knows where the printout came from
+
   header:before {
     display: block;
     content: "Thank your for printing our content at www.getlivesmart.com";
     border: 1px solid #bbb;
     font-style: italic;
     text-align: center;
-    padding: 20px; }
+    padding: 20px;
+  }
 
+  */
   /* Separate blockquotes a little bit from the rest */
   blockquote {
     font-size: 13pt;
@@ -84,4 +87,8 @@
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
-  */ }
+  */
+  .textwidget-title {
+    margin-top: 1em;
+    margin-bottom: 0.2em; }
+ }

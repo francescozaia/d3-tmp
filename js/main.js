@@ -43,13 +43,13 @@ $(function() {
   /*********************/
   /* On data JSON load */
   /*********************/
-  d3.json("./js/data.json", function(error, data) {
-
-    if (error) {
-      return console.warn("Error retrieving JSON: " + error); // TODO handle errors
-    }
-
-    $(".chart").visualizeRisk(data);
-  });
+  //d3.json("./js/data.json", function(error, data) {
+  //
+  //  if (error) {
+  //    return console.warn("Error retrieving JSON: " + error); // TODO handle errors
+  //  }
+  //
+  //  $(".chart").visualizeRisk(data);
+  //});
 
 });

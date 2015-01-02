@@ -1,5 +1,4 @@
-/node_modules
-/build_dev
-/build_prod
-/bower_components
+node_modules/
+bower_components/
+.idea/
 *.pdf

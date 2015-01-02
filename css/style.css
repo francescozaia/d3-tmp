@@ -3044,20 +3044,6 @@ td.ui-datepicker-other-month span {
   border-radius: 12px;
   background: #7b8a97; }
 
-/* Progress Bars style 2 */
-.progressbar.style2 .ui-progressbar, .progressbar.style2 .ui-progressbar-value {
-  height: 8px;
-  border-radius: 4px; }
-
-.progressbar.style2 .ui-progressbar-value:after {
-  top: -5px;
-  right: -21px;
-  width: 42px;
-  height: 18px;
-  border-radius: 9px;
-  background: #fff;
-  border: 8px solid #7b8a97; }
-
 /*-----------------------------------*/
 /* Avatar Placeholder */
 /*-----------------------------------*/
@@ -3234,7 +3220,8 @@ td.ui-datepicker-other-month span {
   padding-left: 27px; }
 
 .textwidget-title {
-  margin-top: 1.6em; }
+  margin-top: 1.6em;
+  margin-bottom: 0.2em; }
 
 .textwidget-title-secondary {
   margin-top: 1.6em;
@@ -3244,30 +3231,100 @@ td.ui-datepicker-other-month span {
 .textwidget .inset {
   padding: 0 0.8em; }
 
-.chart line {
-  opacity: 0.75; }
+/*--------*/
+/* Charts */
+/*--------*/
+.small-chart-container {
+  clear: left; }
+  .small-chart-container h5 {
+    display: inline; }
+    .small-chart-container h5:after {
+      content: "|"; }
+  .small-chart-container h6 {
+    display: inline;
+    font-size: 0.9em; }
 
-.chart .dot {
-  cursor: pointer; }
-
-.col-chart {
-  padding-top: 40px; }
-
-.progressbar {
-  margin-top: 5px; }
-  .progressbar.progressbar--chart .ui-progressbar {
+.small-chart {
+  margin: 5px 0 26px;
+  position: relative; }
+  .small-chart .pbar::selection {
+    background: transparent; }
+  .small-chart .mark-left, .small-chart .mark-right, .small-chart .percent, .small-chart .elapsed, .small-chart .remained {
+    display: none; }
+  .small-chart .small-chart-inner {
     width: 100%;
     height: 20px;
-    border-radius: 0; }
-    .progressbar.progressbar--chart .ui-progressbar .chart {
+    border-radius: 0;
+    overflow: visible !important;
+    position: relative;
+    -webkit-box-shadow: inset 1px 2px 3px -1px #CED6DB;
+    box-shadow: inset 1px 2px 3px -1px #CED6DB;
+    border: 1px solid #ECEFF1;
+    border-top: 1px solid #D1D9DD;
+    border-bottom: 1px solid #F2F2F2; }
+    .small-chart .small-chart-inner .chart {
       margin-top: -15px;
       margin-left: -15px;
       float: left; }
-    .progressbar.progressbar--chart .ui-progressbar .chart-inner {
+      .small-chart .small-chart-inner .chart line {
+        opacity: 0.75; }
+      .small-chart .small-chart-inner .chart .dot {
+        cursor: pointer; }
+    .small-chart .small-chart-inner .chart-description {
       display: inline-block;
-      line-height: 20px;
-      margin-right: 10px;
-      float: right; }
+      line-height: 18px;
+      margin-right: 4px;
+      float: right;
+      font-size: 0.9em;
+      color: #AAA; }
+  .small-chart .axis path, .small-chart .axis line {
+    fill: none;
+    stroke: #ECEFF1;
+    shape-rendering: crispEdges; }
+  .small-chart .axis text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 11px; }
+
+/*---------*/
+/* Tooltip */
+/*---------*/
+.tooltip-inner {
+  min-width: 80px;
+  padding: 22px 8px;
+  color: #6a6a6a;
+  text-align: center;
+  text-decoration: none;
+  background-color: #FFF;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  height: 80px;
+  border-radius: 40px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.5);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.5);
+  box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.5); }
+
+.tooltip-inner p.first {
+  margin: 0;
+  font-weight: bold; }
+
+.tooltip-inner p.second {
+  font-size: 10px;
+  border-top: 1px solid #6a6a6a;
+  line-height: 14px; }
+
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0; }
+
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 10px solid #FFF; }
 
 /*-----------------------------------*/
 /* Image Slider */
@@ -3353,50 +3410,3 @@ td.ui-datepicker-other-month span {
 
 .print-page-break {
   display: none; }
-
-.axis path, .axis line {
-  fill: none;
-  stroke: #ECEFF1;
-  shape-rendering: crispEdges; }
-
-.axis text {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 11px; }
-
-.tooltip-inner {
-  min-width: 80px;
-  padding: 22px 8px;
-  color: #6a6a6a;
-  text-align: center;
-  text-decoration: none;
-  background-color: #FFF;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  height: 80px;
-  border-radius: 40px;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.5);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.5);
-  box-shadow: 0px 0px 20px 0px rgba(20, 20, 20, 0.5); }
-
-.tooltip-inner p.first {
-  margin: 0;
-  font-weight: bold; }
-
-.tooltip-inner p.second {
-  font-size: 10px;
-  border-top: 1px solid #6a6a6a;
-  line-height: 14px; }
-
-.tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0; }
-
-.tooltip.top .tooltip-arrow {
-  bottom: 0;
-  left: 50%;
-  margin-left: -20px;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 10px solid #FFF; }

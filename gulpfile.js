@@ -31,7 +31,6 @@
 
   gulp.task('webserver', function() {
     gulp_connect.server({
-      root: base_path,
       livereload: true
     });
   });

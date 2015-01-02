@@ -1,71 +1,18 @@
 <!doctype html>
-<!--[if lt IE 7 ]><html lang="en" class="no-js ie6" ng-app="Application"> <![endif]-->
-<!--[if IE 7 ]><html lang="en" class="no-js ie7" ng-app="Application"> <![endif]-->
-<!--[if IE 8 ]><html lang="en" class="no-js ie8" ng-app="Application"> <![endif]-->
-<!--[if IE 9 ]><html lang="en" class="no-js ie9" ng-app="Application"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js" ng-app="Application"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6" ng-app="App"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7" ng-app="App"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8" ng-app="App"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9" ng-app="App"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js" ng-app="App"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Live Smart</title>
 
-  <script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+  <script src="./js/libs/modernizr-latest.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
-  <script>
-  var application = angular.module('Application', []);
-
-  application.factory('lsChartService', function ($http) {
-
-    var ret = {};
-
-    ret.getResponseData = function () {
-      return $http({
-        url: "./js/data.json"
-      });
-    };
-
-    return ret;
-  });
-  application.controller("dataController", function($scope, $http) {
-    $http.get('js/data.json').
-    success(function(data, status, headers, config) {
-      $scope.posts = data;
-    }).
-    error(function(data, status, headers, config) {
-      // log error
-    });
-  })
-  application.directive('lsChartDirective', function() {
-    return {
-      templateUrl: './templates/lsChart.html',
-      scope: {
-        chartId: '@',
-        posts: '@'
-      },
-      restrict: 'E',
-      replace: false,
-      controller: function($scope, $element, $attrs, lsChartService){
-        // declare some default values
-        $scope.bttnClass = 'btn btn-default';
-        $scope.defaultText = 'Smart Button';
-        lsChartService.getResponseData().success(function (response) {
-          $scope.responseData = response;
-        });
-      },
-      link: function (scope, element, attrs) {
-
-        var unwatch =  scope.$watch('responseData', function(v) {
-          if(v){ // Check if you got the value already, you can be more specific like angular.isObject/angular.isArray(v)
-            unwatch(); //Remove the watch
-            console.log(v);
-          }
-        });
-      }
-    };
-  });
-  </script>
+  <script src="./js/libs/angular.js/1.3.8/angular.min.js"></script>
 
   <link href="./css/libs/bootstrap.min.css" media="screen" rel="stylesheet">
   <link href="./css/libs/animate.css" media="screen" rel="stylesheet">
@@ -80,9 +27,6 @@
 </head>
 
 <body ng-controller="dataController">
-
-
-  <ls-chart-directive chart-id="0" posts="{{ posts[0] }}"></ls-chart-directive>
 
   <!-- Tooltip -->
   <div class="tooltip top animated print-hidden" role="tooltip">
@@ -118,7 +62,7 @@
 
           <!-- user title -->
           <div class="widget-container widget_recent_entries boxed">
-            <h3 class="widget-title">Francesco Zaia</h3>
+            <h2 class="widget-title">Francesco Zaia</h2>
             <div class="inner">
               <ul>
                 <li class="clearfix">
@@ -130,50 +74,10 @@
           </div>
           <!--/ user title -->
 
-          <!-- widget Accordion -->
-          <div class="widget-container widget-categories widget-accordion print-hidden">
-            <div id="categories">
 
-              <!-- category 1 -->
-              <div class="panel">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#categories" href="#collapse1" hidefocus="true" style="outline: none;"><span>Settings</span></a>
-                </div>
-                <div id="collapse1" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <ul>
-                      <li class="first"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                      <li><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                      <li class="last"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!--/ category 1 -->
-
-              <!-- category 2 -->
-              <div class="panel">
-                <div class="accordion-heading">
-                  <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#categories" href="#collapse2" hidefocus="true" style="outline: none;"><span>About</span></a>
-                </div>
-                <div id="collapse2" class="accordion-body collapse">
-                  <div class="accordion-inner">
-                    <ul>
-                      <li class="first"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                      <li><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                      <li class="last"><a href="#" hidefocus="true" style="outline: none;"><span>Test</span></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!--/ category 2 -->
-
-            </div>
-          </div>
-          <!--/ widget Accordion -->
 
           <!-- widget user details -->
-          <div class="widget-container widget_text boxed">
+          <div class="widget-container widget_text boxed" style="page-break-before: always;">
 
             <!-- widget user details 1 -->
             <h3 class="widget-title">Demographics</h3>
@@ -280,6 +184,7 @@
                     <li><a href="#cardiovascular">Cardiovascular Health</a></li>
                     <li><a href="#doctor-recommendations">Doctor recommendations</a></li>
                   </ul>
+                  <img src="http://placehold.it/1200x600&text=big chart here!"style="width:100%">
                 </div>
               </div>
             </div>
@@ -293,100 +198,71 @@
                   <p>While vital signs often do not give as much specific information as blood tests, they are commonly tracked as macroscopic measures of health.</p>
                 </div>
 
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h3>Weight</h3>
-                    <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
+                <!-- Weight -->
+                <div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h3>Weight</h3>
+                    </div>
                   </div>
-                  <div class="col-sm-7 col-chart">
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <ls-chart-directive chart-id="0"></ls-chart-directive>
+                      <ls-chart-directive chart-id="1"></ls-chart-directive>
+                    </div>
+                  </div>
+                </div>
 
+                <!-- Nutrition -->
+                <div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h3>Nutrition</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <p>5 a day, Salt, Saturated fat</p>
+                    </div>
+                    <div class="col-sm-7 col-chart">
+                      <ls-chart-directive chart-id="2"></ls-chart-directive>
+                    </div>
+                  </div>
+                </div>
 
+                <!-- Activity level -->
+                <div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h3>Activity level</h3>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <p>Good is 30 mins a day for 5 days a week.</p>
+                    </div>
+                    <div class="col-sm-7 col-chart">
+                      <ls-chart-directive chart-id="3"></ls-chart-directive>
+                    </div>
+                  </div>
+                </div>
 
-                    <h5>Weight</h5>
-                    <div class="post-chart progressbar progressbar--chart">
-                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                        <div id="chart-0" class="chart chart-weight">
-                          <!-- chart goes here -->
-                        </div>
-                        <div class="chart-inner">weight</div>
-                      </div>
-                    </div>
-                    <h5>Body mass</h5>
-                    <div class="post-chart progressbar progressbar--chart">
-                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                        <div id="chart-1" class="chart chart-body-mass">
-                          <!-- chart goes here -->
-                        </div>
-                        <div class="chart-inner">body mass</div>
-                      </div>
+                <!-- Smoking -->
+                <div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h3>Smoking</h3>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h3>Nutrition</h3>
-                    <p>5 a day, Salt, Saturated fat</p>
-                  </div>
-                  <div class="col-sm-7 col-chart">
-                    <h5>Weight</h5>
-                    <div class="post-chart progressbar progressbar--chart">
-                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                        <div id="chart-1" class="chart chart-body-mass">
-                          <!-- chart goes here -->
-                        </div>
-                        <div class="chart-inner">body mass</div>
-                      </div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <p>Good is 30 mins a day for 5 days a week.</p>
                     </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h3>Activity level</h3>
-                    <p>Good is 30 mins a day for 5 days a week.</p>
-                  </div>
-                  <div class="col-sm-7 col-chart">
-                    <h5>Activity Level</h5>
-                    <div class="post-chart progressbar progressbar--chart">
-                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                        <div id="chart-2" class="chart chart-body-mass">
-                          <!-- chart goes here -->
-                        </div>
-                        <div class="chart-inner">---</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h3>Smoking</h3>
-                    <p>Todo</p>
-                  </div>
-                  <div class="col-sm-7 col-chart">
-                    <h5>Smoking</h5>
-                    <div class="post-chart progressbar progressbar--chart">
-                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                        <div id="chart-3" class="chart chart-body-mass">
-                          <!-- chart goes here -->
-                        </div>
-                        <div class="chart-inner">---</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h3>Alcohol</h3>
-                    <p>Todo</p>
-                  </div>
-                  <div class="col-sm-7 col-chart">
-                    <h5>Alcohol</h5>
-                    <div class="post-chart progressbar progressbar--chart">
-                      <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                        <div id="chart-3" class="chart chart-body-mass">
-                          <!-- chart goes here -->
-                        </div>
-                        <div class="chart-inner">---</div>
-                      </div>
+                    <div class="col-sm-7 col-chart">
+                      <ls-chart-directive chart-id="4"></ls-chart-directive>
                     </div>
                   </div>
                 </div>
@@ -632,6 +508,11 @@
 
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+
+  <script src="./js/angular/app/app.js"></script>
+  <script src="./js/angular/app/app-services.js"></script>
+  <script src="./js/angular/app/app-directives.js"></script>
+  <script src="./js/angular/app/app-controllers.js"></script>
 
   <script src="./js/maps.js"></script>
   <script src="./js/theme.js"></script>

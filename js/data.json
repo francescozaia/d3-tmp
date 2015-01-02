@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": 0,
     "name": "Weight",
     "description": "Your weight",
@@ -15,19 +16,11 @@
       }
     }],
     "risk_range": [{
-      "value": "high",
-      "range_band": [0, 18.5]
-    }, {
-      "value": "high",
-      "range_band": [50, 180]
-    }, {
-      "value": "medium",
-      "range_band": [25, 50]
-    }, {
       "value": "optimal",
-      "range_band": [18.5, 25]
+      "range_band": [0, 250]
     }]
-  }, {
+  },
+  {
     "id": 1,
     "name": "Body Mass Index",
     "description": "Measure of weight to height",
@@ -39,25 +32,32 @@
     "test_results": [{
       "test_result": {
         "id": 2998851,
-        "value": 25.8,
+        "value": 65,
         "date": "2014-12-19"
       }
     }],
     "risk_range": [{
       "value": "high",
-      "range_band": [30, 100]
+      "range_band": [0, 18.5]
+    }, {
+      "value": "high",
+      "range_band": [50, 80]
+    }, {
+      "value": "medium",
+      "range_band": [25, 50]
     }, {
       "value": "optimal",
-      "range_band": [0, 30]
+      "range_band": [18.5, 25]
     }]
-  }, {
+  },
+  {
     "id": 2,
-    "name": "Activity Level",
-    "description": "",
-    "marker_code": "run",
+    "name": "Nutrition",
+    "description": "How's going?",
+    "marker_code": "test",
     "long_description": "",
     "advice": "",
-    "units": "pounds",
+    "units": "test",
     "test_dates": ["2014-12-19"],
     "test_results": [{
       "test_result": {
@@ -76,10 +76,38 @@
       "value": "high",
       "range_band": [40, 60]
     }]
-  }, {
+  },
+  {
     "id": 3,
-    "name": "Smnoking",
-    "description": "",
+    "name": "Activity Level",
+    "description": "How many steps you do in a day",
+    "marker_code": "steps",
+    "long_description": "",
+    "advice": "",
+    "units": "steps",
+    "test_dates": ["2014-12-19"],
+    "test_results": [{
+      "test_result": {
+        "id": 2998849,
+        "value": 3400,
+        "date": "2014-12-19"
+      }
+    }],
+    "risk_range": [{
+      "value": "optimal",
+      "range_band": [4000, 10000]
+    },{
+      "value": "medium",
+      "range_band": [2000, 4000]
+    }, {
+      "value": "high",
+      "range_band": [0, 2000]
+    }]
+  },
+  {
+    "id": 4,
+    "name": "Smoking",
+    "description": "How many cigarettes you smoke in a day",
     "marker_code": "cigarettes",
     "long_description": "",
     "advice": "",
@@ -99,4 +127,5 @@
       "value": "high",
       "range_band": [6, 40]
     }]
-}]
+  }
+]

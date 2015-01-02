@@ -1,11 +1,12 @@
-<div>
-  <h5>{{posts}}</h5>
-  <div class="post-chart progressbar progressbar--chart">
-    <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-      <div id="chart-0" class="chart chart-weight">
+<div class="small-chart-container">
+  <h5>{{ currentData.name }}</h5>
+  <h6>{{ currentData.description }}</h6>
+  <div class="small-chart">
+    <div class="small-chart-inner">
+      <div id="chart-{{ chartId }}" class="chart">
         <!-- chart goes here -->
       </div>
-      <div class="chart-inner">{{chartId}}</div>
+      <div class="chart-description">{{ currentData.units }}</div>
     </div>
   </div>
 </div>

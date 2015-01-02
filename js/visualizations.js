@@ -30,10 +30,10 @@ $(function() {
       lineColours = settings.lineColours;
 
       // picking element id and selecting marker
-      var chartID = parseInt(element.id.replace("chart-", ""), 10);
-      data = _data[chartID];
-      units = _data[chartID].units;
-      range = _data[chartID].risk_range;
+      //var chartID = parseInt(element.id.replace("chart-", ""), 10);
+      data = _data;
+      units = _data.units;
+      range = _data.risk_range;
 
       // getting the max value from all the risk bands to set the domain
       var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));

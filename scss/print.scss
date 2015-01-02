@@ -64,7 +64,7 @@
 
   header .print {display: block} // TODO
 
-  /* Display the URL of the site so that the user knows where the printout came from */
+  /* Display the URL of the site so that the user knows where the printout came from
 
   header:before {
     display: block;
@@ -74,6 +74,8 @@
     text-align: center;
     padding: 20px;
   }
+
+  */
 
   /* Separate blockquotes a little bit from the rest */
 
@@ -115,4 +117,9 @@
     content: " (" attr(title) ")";
   }
   */
+
+  .textwidget-title {
+    margin-top: 1em;
+    margin-bottom: .2em;
+  }
 }
