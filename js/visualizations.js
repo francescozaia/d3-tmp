@@ -52,7 +52,8 @@ $(function() {
       _drawBands();
 
       _drawMarker();
-    }
+
+    };
 
     var _drawAxis = function() {
 
@@ -81,7 +82,7 @@ $(function() {
       chart.selectAll(".xaxis text")  // select all the text elements for the xaxis
         .attr("transform", "translate(-5,5)rotate(-30)");
 
-    }
+    };
 
     var _drawBands = function() {
 
@@ -126,7 +127,7 @@ $(function() {
 
       });
 
-    }
+    };
 
     var _drawMarker = function() {
 
@@ -154,6 +155,34 @@ $(function() {
         .attr("r", _radius)
         .attr("opacity", 1);
 
+      //var plus = chart.append("line")
+      //  .attr("x1", function(d) {
+      //    var x = scale(data.test_results[0].test_result.value) + _radius;
+      //    return x;
+      //  })
+      //  .attr("y1", barHeight/2 + _radius - 5)
+      //  .attr("x2", function(d) {
+      //    var x = scale(data.test_results[0].test_result.value) + _radius;
+      //    return x;
+      //  })
+      //  .attr("y2", barHeight/2 + _radius + 5)
+      //  .attr("stroke-width", 2)
+      //  .attr("stroke", "black");
+      //
+      //var minus = chart.append("line")
+      //  .attr("x1", function(d) {
+      //    var x = scale(data.test_results[0].test_result.value) + _radius - 5;
+      //    return x;
+      //  })
+      //  .attr("y1", barHeight/2 + _radius)
+      //  .attr("x2", function(d) {
+      //    var x = scale(data.test_results[0].test_result.value) + _radius + 5;
+      //    return x;
+      //  })
+      //  .attr("y2", barHeight/2 + _radius)
+      //  .attr("stroke-width", 2)
+      //  .attr("stroke", "black");
+
       $(marker[0]).on("mouseover", function(d) {
         d3.select(this).transition().duration(200).attr("r", _radiusHover);
         _showTooltip(this);
@@ -163,9 +192,13 @@ $(function() {
         _hideTooltip(this);
       });
       $(marker[0]).on("click", function(d) {
-        _showTooltip(this);
+        _showHelp(this);
       });
-    }
+    };
+
+    var _showHelp = function(element) {
+      $(element).closest(".small-chart-container").find(".chart-long-description").addClass("active");
+    };
 
     var _showTooltip = function(element) {
       var txt = $(element).data("title");
@@ -179,12 +212,14 @@ $(function() {
       $(".tooltip").css("position", "absolute").css("top", posY + "px").css("left", posX + "px");
       $(".tooltip").removeClass("fadeOut");
       $(".tooltip").addClass("bounceIn");
-    }
+    };
+
     var _hideTooltip = function(element) {
+      $(element).closest(".small-chart-container").find(".chart-long-description").removeClass("active");
       $(".tooltip").css("position", "absolute").css("left", -1000 + "px");
       $(".tooltip").removeClass("bounceIn");
       $(".tooltip").addClass("fadeOut");
-    }
+    };
 
     // Public API
     return {

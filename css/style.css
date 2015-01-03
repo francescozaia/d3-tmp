@@ -3243,6 +3243,27 @@ td.ui-datepicker-other-month span {
   .small-chart-container h6 {
     display: inline;
     font-size: 0.9em; }
+  .small-chart-container .chart-long-description {
+    font-style: italic;
+    clear: left;
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    overflow-y: hidden; }
+    .small-chart-container .chart-long-description.active {
+      max-height: 300px;
+      opacity: 1;
+      transition-delay: 0s; }
+    .small-chart-container .chart-long-description::first-letter {
+      background-color: #666;
+      color: #FFF;
+      font-size: 24px;
+      font-style: normal;
+      display: inline-block;
+      padding: 0 5px;
+      border-radius: 3px;
+      margin-right: 2px;
+      font-family: serif; }
 
 .small-chart {
   margin: 5px 0 26px;
