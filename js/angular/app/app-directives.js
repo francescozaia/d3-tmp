@@ -18,44 +18,12 @@ angular.module('App')
         });
       },
       link: function (scope, element, attrs) {
-
         var unwatch =  scope.$watch('responseData', function(v) {
-          if(v){ // Check if you got the value already, you can be more specific like angular.isObject/angular.isArray(v)
-            unwatch(); //Remove the watch
-            console.log(v);
+          // review this watch console.log(angular.isArray(v))
+          if(angular.isArray(v)){
+            unwatch();
           }
         });
       }
     };
   });
-
-/*
- angular.module('App')
- .directive('mfMain', function () {
-
- 'use strict';
-
- return {
- restrict: 'A',
- transclude: true,
- replace: false
- };
- })
-
- .directive('autoFillSync', function($timeout) {
- return {
- require: 'ngModel',
- link: function(scope, elem, attrs, model) {
- var origVal = elem.val();
-
- $timeout(function () {
- var newVal = elem.val();
- if(model.$pristine && origVal !== newVal) {
- model.$setViewValue(newVal);
- }
- }, 500);
- }
- };
- });
-
- */
