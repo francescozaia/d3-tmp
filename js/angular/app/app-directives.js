@@ -8,7 +8,6 @@ angular.module('App')
       restrict: 'E',
       replace: false,
       controller: function($scope, $element, $attrs, lsChartService){
-        // declare some default values
         $scope.defaultText = 'text';
         lsChartService.getResponseData().success(function (response) {
           $scope.responseData = response;
