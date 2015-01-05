@@ -8,9 +8,6 @@ $(function() {
       rightPadding,
       topPadding,
       bottomPadding,
-      element,
-      units,
-      range,
       data,
       lineColours,
       chart,
@@ -18,7 +15,7 @@ $(function() {
 
     var _drawChartComponent = function(_element, _data, settings) {
 
-      element = _element;
+      data = _data;
 
       barWidth = settings.barWidth;
       barHeight = settings.barHeight;
@@ -29,20 +26,15 @@ $(function() {
       bottomPadding = settings.bottomPadding;
       lineColours = settings.lineColours;
 
-      // picking element id and selecting marker
-      //var chartID = parseInt(element.id.replace("chart-", ""), 10);
-      data = _data;
-      units = _data.units;
-      range = _data.risk_range;
 
       // getting the max value from all the risk bands to set the domain
-      var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));
+      var maxRange = _.max((_.flatten(_.pluck(data.risk_range, 'range_band'))));
 
       scale = d3.scale.linear();
       scale.domain([0, maxRange]);
       scale.range([0, barWidth]);
 
-      chart = d3.select(element)
+      chart = d3.select(_element)
         .append("svg:svg")
         .attr('width', barWidth + leftPadding + rightPadding)
         .attr('height', barHeight + topPadding + bottomPadding);
@@ -57,7 +49,7 @@ $(function() {
 
     var _drawAxis = function() {
 
-      var maxRange = _.max((_.flatten(_.pluck(range, 'range_band'))));
+      var maxRange = _.max((_.flatten(_.pluck(data.risk_range, 'range_band'))));
       var axisScale = d3.scale.linear();
       axisScale.domain([0, maxRange]);
       var xRange = axisScale.range([0, barWidth -2]);
@@ -86,7 +78,7 @@ $(function() {
 
     var _drawBands = function() {
 
-      range.forEach(function(b) {
+      data.risk_range.forEach(function(b) {
 
         var value_zero = parseInt(b.range_band[0], 10);
         var value_uno = parseInt(b.range_band[1], 10);
@@ -184,6 +176,7 @@ $(function() {
       //  .attr("stroke", "black");
 
       $(marker[0]).on("mouseover", function(d) {
+
         d3.select(this).transition().duration(200).attr("r", _radiusHover);
         _showTooltip(this);
       });
@@ -197,28 +190,63 @@ $(function() {
     };
 
     var _showHelp = function(element) {
+
+      // showing help description. TODO
       $(element).closest(".small-chart-container").find(".chart-long-description").addClass("active");
+
     };
 
     var _showTooltip = function(element) {
+
+      // retrieving content from data attribute.
       var txt = $(element).data("title");
+
+      // adding content to tooltip.
       $(".tooltip").find(".tooltip-inner").html(txt);
 
-      var posXs =$(".tooltip").find(".tooltip-inner").width()/2 - 9;
+      // calculating the middle position to center the tooltip.
+      var posXs = $(".tooltip").find(".tooltip-inner").width()/2 - 9;
 
+      // calculating final x and y position for tooltip.
       var posX = parseInt( $(element).offset().left - posXs, 10),
-        posY = parseInt( $(element).offset().top - 90, 10);
+          posY = parseInt( $(element).offset().top - 90, 10);
 
-      $(".tooltip").css("position", "absolute").css("top", posY + "px").css("left", posX + "px");
-      $(".tooltip").removeClass("fadeOut");
-      $(".tooltip").addClass("bounceIn");
+      // positioning tooltip.
+      $(".tooltip")
+        .css("top", posY + "px")
+        .css("left", posX + "px");
+
+      // showing tooltip.
+      if(!Modernizr.cssanimations) {
+        // degradation for !Modernizr.cssanimations
+        $(".tooltip")
+          .css("opacity", 1);
+      } else {
+        $(".tooltip").removeClass("fadeOut");
+        $(".tooltip").addClass("bounceIn");
+      }
+
     };
 
     var _hideTooltip = function(element) {
+
+      // hiding help description. TODO
       $(element).closest(".small-chart-container").find(".chart-long-description").removeClass("active");
-      $(".tooltip").css("position", "absolute").css("left", -1000 + "px");
-      $(".tooltip").removeClass("bounceIn");
-      $(".tooltip").addClass("fadeOut");
+
+      // moving tooltip away
+
+
+      // hiding tooltip.
+      if(!Modernizr.cssanimations) {
+        // degradation for !Modernizr.cssanimations
+        $(".tooltip")
+          .css("left", -10000 + "px")
+          .css("opacity", 0);
+      } else {
+        $(".tooltip").removeClass("bounceIn");
+        $(".tooltip").addClass("fadeOut");
+      }
+
     };
 
     // Public API

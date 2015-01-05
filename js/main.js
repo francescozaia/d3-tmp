@@ -11,19 +11,6 @@ $(function() {
     $("body").addClass("gradient");
   }, 0);
 
-  // buttons
-  $(".btn").hover(function(){
-    $(this).stop().animate({"opacity": .8});
-  },function(){
-    $(this).stop().animate({"opacity": 1});
-  });
-  $('a.btn, span.btn').on('mousedown', function(){
-    $(this).addClass('active')
-  });
-  $('a.btn, span.btn').on('mouseup mouseout', function(){
-    $(this).removeClass('active')
-  });
-
   // Smooth scrolling
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(
@@ -40,16 +27,43 @@ $(function() {
     }
   });
 
-  /*********************/
-  /* On data JSON load */
-  /*********************/
-  //d3.json("./js/data.json", function(error, data) {
-  //
-  //  if (error) {
-  //    return console.warn("Error retrieving JSON: " + error); // TODO handle errors
-  //  }
-  //
-  //  $(".chart").visualizeRisk(data);
-  //});
+  var initCarousels = function() {
+
+    // Testimonials carousel
+    $('#testimonials-1').carouFredSel({
+      next: "#testimonials-next-1",
+      prev: "#testimonials-prev-1",
+      infinite: false,
+      items: 1,
+      auto: {
+        play: true,
+        timeoutDuration: 8000
+      },
+      scroll: {
+        items: 1,
+        fx: "crossfade",
+        easing: "linear",
+        pauseOnHover: true,
+        duration: 200
+      }
+    });
+
+    // Partners carousel
+    $('#partners').carouFredSel({
+      next: "#partners-next",
+      prev: "#partners-prev",
+      auto: 8000,
+      scroll: {
+        items: 1
+      }
+    });
+
+  }
+
+  initCarousels();
+
+  $(window).resize(function() {
+    initCarousels();
+  });
 
 });

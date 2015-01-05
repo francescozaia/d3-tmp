@@ -1,0 +1,26 @@
+/*===================================================*/
+/* GENERAL TYPOGRAPHY */
+/*===================================================*/
+
+/*-----------------------------------*/
+/* Fonts */
+/*-----------------------------------*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700,800);
+
+$font-open-sans-stack: 'Open Sans', sans-serif;
+$font-open-sans-weight-light: 300;
+$font-open-sans-weight-normal: 400;
+$font-open-sans-weight-semi-bold: 700;
+$font-open-sans-weight-bold: 700;
+$font-open-sans-weight-extra-bold: 300;
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}

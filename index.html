@@ -169,13 +169,14 @@
 
       <!-- main section -->
       <article class="col-md-8 col-md-pull-4">
+
         <!-- content-->
         <div class="content" role="main">
 
           <!-- post list -->
           <div class="postlist" style="page-break-before: always;">
 
-            <!-- post item 1 -->
+            <!-- Weight, Nutrition & lifestyle -->
             <div class="post-item boxed">
               <div class="inner">
                 <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Your Summary</a></h1></div>
@@ -189,9 +190,7 @@
                 </div>
               </div>
             </div>
-            <!--/ post item 1 -->
 
-            <!-- post item 2 -->
             <div id="weight" class="post-item boxed" style="page-break-before: always;">
               <div class="inner">
                 <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Weight, Nutrition &amp; lifestyle</a></h1></div>
@@ -263,99 +262,96 @@
                       <p>Good is 30 mins a day for 5 days a week.</p>
                     </div>
                     <div class="col-sm-7 col-chart">
-                      <app-directive chart-id="4"></app-directive>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--/ post item 2-->
-
-            <!-- post item 3 -->
-            <div id="cardiovascular" class="post-item boxed" style="page-break-before: always;">
-              <div class="inner">
-                <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Cardiovascular Health</a></h1></div>
-                <div class="post-intro-text">
-                  <p>Your cardiovascular system is made up of your heart and blood vessels, and is responsible for transporting oxygen, nutrients, hormones, and waste products throughout the body. A healthy cardiovascular system ensures a good balance of nutrients and optimal brain and body function.</p>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-5">
-                    <h3>Lipid Panel</h3>
-                    <p>The basic lipid panel includes cholesterol levels (both the good HDL and
-                      the bad LDL and other non-HDL cholesterols), as well as triglycerides.
-                      Elevated levels of triglycerides or non-HDL cholesterol can increase your
-                      risk of cardiovascular disease, which can lead to heart attacks and
-                      strokes. Higher levels of artery-clearing HDL, however, can reduce this
-                      risk.</p>
-                    </div>
-                    <div class="col-sm-7 col-chart">
-                      <h5>Weight</h5>
-                      <div class="post-chart progressbar progressbar--chart">
-                        <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                          <div id="chart-0" class="chart chart-weight">
-                            <!-- chart goes here -->
-                          </div>
-                          <div class="chart-inner">weight</div>
-                        </div>
-                      </div>
-                      <h5>Body mass</h5>
-                      <div class="post-chart progressbar progressbar--chart">
-                        <div class="pbar ui-progressbar ui-widget ui-widget-content ui-corner-all">
-                          <div id="chart-1" class="chart chart-body-mass">
-                            <!-- chart goes here -->
-                          </div>
-                          <div class="chart-inner">body mass</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5">
-                      <h3>Alcohol</h3>
-                      <p>Todo</p>
-                    </div>
-                    <div class="col-sm-7 col-chart">
-                      <h5>Weight</h5>
                       Todo
                     </div>
                   </div>
                 </div>
               </div>
-              <!--/ post item 3 -->
-
             </div>
-            <!--/ postlist-->
+            <!--/ Weight, Nutrition & lifestyle -->
 
-            <!-- post comments -->
-            <div id="doctor-recommendations" class="comment-list clearfix" id="comments" style="page-break-before: always;">
-              <h2>Doctor recommendations:</h2>
-              <ol>
-                <li class="comment first">
-                  <div class="comment-body boxed">
-                    <div class="comment-arrow"></div>
-                    <div class="comment-avatar">
-                      <div class="avatar"><img src="images/temp/avatar3.png" alt=""></div>
+            <!-- Cardiovascular Health -->
+            <div id="cardiovascular" class="post-item boxed" style="page-break-before: always;">
+              <div class="inner">
+                <div class="post-title">
+                  <h1><a href="#" hidefocus="true" style="outline: none;">Cardiovascular Health</a></h1>
+                </div>
+                <div class="post-intro-text">
+                  <p>Your cardiovascular system is made up of your heart and blood vessels, and is responsible for transporting oxygen, nutrients, hormones, and waste products throughout the body. A healthy cardiovascular system ensures a good balance of nutrients and optimal brain and body function.</p>
+                </div>
+
+                <!-- Weight -->
+                <div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h3>Weight</h3>
                     </div>
-                    <div class="comment-text">
-                      <div class="comment-author clearfix">
-                        <a href="#" class="link-author" hidefocus="true" style="outline: none;">Dr. Gas</a>
-                      </div>
-                      <div class="comment-entry">
-                        Eat less, fatty! :)
-                      </div>
-                    </div>
-                    <div class="clear"></div>
                   </div>
-                </li>
-              </ol>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
+                    </div>
+                    <div class="col-sm-7">
+                      <app-directive chart-id="4"></app-directive>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Lipid -->
+                <div>
+                  <div class="row">
+                    <div class="col-sm-5">
+                      <h3>Lipid Panel</h3>
+                      <p>The basic lipid panel includes cholesterol levels (both the good HDL and
+                        the bad LDL and other non-HDL cholesterols), as well as triglycerides.
+                        Elevated levels of triglycerides or non-HDL cholesterol can increase your
+                        risk of cardiovascular disease, which can lead to heart attacks and
+                        strokes. Higher levels of artery-clearing HDL, however, can reduce this
+                        risk.</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-7">
+                        Todo
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <!--/ post comments -->
+            <!--/ Cardiovascular Health -->
 
           </div>
-          <!--/ content-->
+          <!--/ postlist-->
 
-        </article>
+          <!-- doctor comments -->
+          <div id="doctor-recommendations" class="comment-list clearfix" id="comments" style="page-break-before: always;">
+            <h2>Doctor recommendations:</h2>
+            <ol>
+              <li class="comment first">
+                <div class="comment-body boxed">
+                  <div class="comment-arrow"></div>
+                  <div class="comment-avatar">
+                    <div class="avatar"><img src="images/temp/avatar3.png" alt=""></div>
+                  </div>
+                  <div class="comment-text">
+                    <div class="comment-author clearfix">
+                      <a href="#" class="link-author" hidefocus="true" style="outline: none;">Dr. Gas</a>
+                    </div>
+                    <div class="comment-entry">
+                      Eat less, fatty! :)
+                    </div>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <!--/ post comments -->
+
+        </div>
+        <!--/ content-->
+
+      </article>
       <!--/ main section -->
 
     </div>
