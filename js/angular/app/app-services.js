@@ -1,5 +1,5 @@
-angular.module('App')
-  .factory('lsChartService', function ($http) {
+angular.module("app")
+  .factory("appService", ["$http", function ($http) {
 
     var _getResponseData = function () {
       return $http({
@@ -14,4 +14,4 @@ angular.module('App')
         return _getResponseData();
       }
     };
-  });
+  }]);

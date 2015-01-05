@@ -1,9 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7 ]><html lang="en" class="no-js ie6" ng-app="App"> <![endif]-->
-<!--[if IE 7 ]><html lang="en" class="no-js ie7" ng-app="App"> <![endif]-->
-<!--[if IE 8 ]><html lang="en" class="no-js ie8" ng-app="App"> <![endif]-->
-<!--[if IE 9 ]><html lang="en" class="no-js ie9" ng-app="App"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js" ng-app="App"> <!--<![endif]-->
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6" ng-app="app"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7" ng-app="app"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8" ng-app="app"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9" ng-app="app"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js" ng-app="app"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta name="keywords" content="">
@@ -24,9 +24,12 @@
     .gradient {filter: none !important;}
     </style>
   <![endif]-->
+  <style>
+  [ng\:cloak],[ng-cloak],.ng-cloak{display:none !important}
+  </style>
 </head>
 
-<body ng-controller="dataController">
+<body ng-controller="AppController">
 
   <!-- Tooltip -->
   <div class="tooltip top animated print-hidden" role="tooltip">
@@ -62,7 +65,7 @@
 
           <!-- user title -->
           <div class="widget-container widget_recent_entries boxed">
-            <h2 class="widget-title">Francesco Zaia</h2>
+            <h2 class="widget-title"><span ng-cloak>{{ responseData.first_name }} {{ responseData.family_name }}</span></h2>
             <div class="inner">
               <ul>
                 <li class="clearfix">
@@ -74,8 +77,6 @@
           </div>
           <!--/ user title -->
 
-
-
           <!-- widget user details -->
           <div class="widget-container widget_text boxed" style="page-break-before: always;">
 
@@ -84,32 +85,32 @@
             <div class="inner">
               <ul class="clearfix">
                 <li class="follow-item first">
-                  <div class="follow-counter"><strong>M</strong><em>&nbsp;</em></div>
+                  <div class="follow-counter"><strong ng-cloak>{{ responseData.gender }}</strong><em>gender</em></div>
                 </li>
                 <li class="follow-item blue">
-                  <div class="follow-counter"><strong>40</strong><em>years</em></div>
+                  <div class="follow-counter"><strong ng-cloak>{{ responseData.age }}</strong><em>years</em></div>
                 </li>
                 <li class="follow-item yellow">
-                  <div class="follow-counter"><strong>172</strong><em>cm</em></div>
+                  <div class="follow-counter"><strong ng-cloak>{{ responseData.height }}</strong><em>cm</em></div>
                 </li>
                 <li class="follow-item red last">
-                  <div class="follow-counter"><strong>65</strong><em>kg</em></div>
+                  <div class="follow-counter"><strong ng-cloak>{{ responseData.weight }}</strong><em>kg</em></div>
                 </li>
               </ul>
               <div class="textwidget">
                 <h3 class="textwidget-title">Vitals</h3>
                 <ul>
-                  <li><strong>BMI: </strong>22.7</li>
+                  <li><strong>BMI: </strong><span ng-cloak>{{ responseData.vitals.bmi }}</span></li>
                 </ul>
                 <h3 class="textwidget-title">Ethnicity</h3>
                 <ul>
-                  <li><strong>Mother: </strong>White/Caucasian</li>
-                  <li><strong>Father: </strong>White/Caucasian</li>
+                  <li><strong>Mother: </strong><span ng-cloak>{{ responseData.ethnicity.mother }}</span></li>
+                  <li><strong>Father: </strong><span ng-cloak>{{ responseData.ethnicity.father }}</span></li>
                 </ul>
                 <h3 class="textwidget-title">Family</h3>
                 <ul>
-                  <li><strong>Status: </strong>Domestic Partner</li>
-                  <li><strong>Children: </strong>2 sons</li>
+                  <li><strong>Status: </strong><span ng-cloak>{{ responseData.family.status }}</span></li>
+                  <li><strong>Children: </strong><span ng-cloak>{{ responseData.family.children }}</span></li>
                 </ul>
               </div>
             </div>
@@ -122,15 +123,15 @@
               <div class="textwidget">
                 <h3 class="textwidget-title">Chronic Conditions</h3>
                 <ul>
-                  <li>Ashma</li>
+                  <li><span ng-cloak>{{ responseData.conditions.chronic_conditions }}</span></li>
                 </ul>
                 <h3 class="textwidget-title">Surgeries &amp; Hospitalizations</h3>
                 <ul>
-                  <li>none</li>
+                  <li><span ng-cloak>{{ responseData.conditions.hospitalizations }}</span></li>
                 </ul>
                 <h3 class="textwidget-title">Accidents</h3>
                 <ul>
-                  <li>none</li>
+                  <li><span ng-cloak>{{ responseData.conditions.accidents }}</span></li>
                 </ul>
               </div>
             </div>
@@ -210,8 +211,8 @@
                       <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
                     </div>
                     <div class="col-sm-7">
-                      <ls-chart-directive chart-id="0"></ls-chart-directive>
-                      <ls-chart-directive chart-id="1"></ls-chart-directive>
+                      <app-directive chart-id="0"></app-directive>
+                      <app-directive chart-id="1"></app-directive>
                     </div>
                   </div>
                 </div>
@@ -228,7 +229,7 @@
                       <p>5 a day, Salt, Saturated fat</p>
                     </div>
                     <div class="col-sm-7 col-chart">
-                      <ls-chart-directive chart-id="2"></ls-chart-directive>
+                      <app-directive chart-id="2"></app-directive>
                     </div>
                   </div>
                 </div>
@@ -245,7 +246,7 @@
                       <p>Good is 30 mins a day for 5 days a week.</p>
                     </div>
                     <div class="col-sm-7 col-chart">
-                      <ls-chart-directive chart-id="3"></ls-chart-directive>
+                      <app-directive chart-id="3"></app-directive>
                     </div>
                   </div>
                 </div>
@@ -262,7 +263,7 @@
                       <p>Good is 30 mins a day for 5 days a week.</p>
                     </div>
                     <div class="col-sm-7 col-chart">
-                      <ls-chart-directive chart-id="4"></ls-chart-directive>
+                      <app-directive chart-id="4"></app-directive>
                     </div>
                   </div>
                 </div>
@@ -497,14 +498,12 @@
   <!--/ Footer -->
 
   <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-  <!-- oneByone slider -->
-  <script src="js/libs/jquery.onecarousel.min.js"></script>
   <!-- CarouFredSel  -->
-  <script src="js/libs/jquery.carouFredSel-6.2.1-packed.js"></script>
+  <script src="./js/libs/jquery.carouFredSel-6.2.1-packed.js"></script>
 
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
@@ -514,10 +513,14 @@
   <script src="./js/angular/app/app-directives.js"></script>
   <script src="./js/angular/app/app-controllers.js"></script>
 
-  <script src="./js/maps.js"></script>
-  <script src="./js/theme.js"></script>
-  <script src="./js/main.js"></script>
-  <script src="./js/visualizations.js"></script>
+  <!--
+  <script src="./js/minified/angular.app.min.js"></script>
+  -->
+
+  <script src="./js/minified/maps.min.js"></script>
+  <script src="./js/minified/theme.min.js"></script>
+  <script src="./js/minified/main.min.js"></script>
+  <script src="./js/minified/visualizations.min.js"></script>
 
 </body>
 </html>

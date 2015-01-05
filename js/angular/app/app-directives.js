@@ -1,28 +1,29 @@
-angular.module('App')
-  .directive('lsChartDirective', function() {
+angular.module("app")
+  .directive("appDirective", function() {
+
     return {
-      templateUrl: './templates/lsChart.html',
+      templateUrl: "./templates/lsChart.html",
+      restrict: "E",
       scope: {
-        chartId: '@'
+        chartId: "@" // using the chartId set as HTML attribute to pick the appropriate JSON id
       },
-      restrict: 'E',
       replace: false,
-      controller: function($scope, $element, $attrs, lsChartService){
-        $scope.defaultText = 'text';
-        lsChartService.getResponseData().success(function (response) {
-          $scope.responseData = response;
-          $scope.currentData = $scope.responseData[$scope.chartId];
-          $scope.description = $scope.responseData[$scope.chartId].description;
-          $("#chart-" + $scope.chartId).visualizeRisk($scope.responseData[$scope.chartId]);
-        });
-      },
       link: function (scope, element, attrs) {
-        var unwatch =  scope.$watch('responseData', function(v) {
-          // review this watch console.log(angular.isArray(v))
-          if(angular.isArray(v)){
+
+        // watches for the parent controller to retrieve the data
+        var unwatch = scope.$parent.$watch("responseData", function(responseData) {
+          if (angular.isObject(responseData) && angular.isArray(responseData.blood_test_results)) {
+
+            // selecting current data to visualize - value used by template
+            scope.responseDataItem = responseData.blood_test_results[scope.chartId];
+
+            // 'initializing' data visualization for the current element
+            $("#chart-" + scope.chartId).visualizeRisk(scope.responseDataItem);
+
+            // removing watcher
             unwatch();
           }
-        });
+        }, true);
       }
     };
   });

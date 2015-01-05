@@ -1,15 +1,15 @@
 <div class="small-chart-container">
-  <h5>{{ currentData.name }}</h5>
-  <h6>{{ currentData.description }}</h6>
+  <h5>{{ responseDataItem.name }}</h5>
+  <h6>{{ responseDataItem.description }}</h6>
   <div class="small-chart">
     <div class="small-chart-inner">
       <div id="chart-{{ chartId }}" class="chart">
         <!-- chart goes here -->
       </div>
-      <div class="chart-description">{{ currentData.units }}</div>
+      <div class="chart-description">{{ responseDataItem.units }}</div>
     </div>
   </div>
   <div class="chart-long-description">
-    <div style="margin:20px;">{{ currentData.long_description }}</div>
+    <div style="margin:20px;">{{ responseDataItem.long_description }}</div>
   </div>
 </div>

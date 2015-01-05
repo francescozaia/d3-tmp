@@ -1,14 +1,14 @@
 $(function() {
-  $('#myCarousel').oneCarousel({
-    easeIn: 'rotateIn',
-    interval: 5000,
-    pause: 'hover'
-  });
-  $('#myCarousel2').oneCarousel({
-    easeIn: 'rotateIn',
-    interval: 8000,
-    pause: 'hover'
-  });
+  // $('#myCarousel').oneCarousel({
+  //   easeIn: 'rotateIn',
+  //   interval: 5000,
+  //   pause: 'hover'
+  // });
+  // $('#myCarousel2').oneCarousel({
+  //   easeIn: 'rotateIn',
+  //   interval: 8000,
+  //   pause: 'hover'
+  // });
   $('#testimonials-1').carouFredSel({
     next: "#testimonials-next-1",
     prev: "#testimonials-prev-1",

@@ -7,7 +7,8 @@
   gulp_minifyCSS = require('gulp-minify-css'),
   gulp_rename = require('gulp-rename'),
   gulp_uglify = require('gulp-uglify'),
-  gulp_connect = require('gulp-connect');
+  gulp_connect = require('gulp-connect'),
+  gulp_concat = require('gulp-concat');
 
   /**
   *  base_path source folder
@@ -26,8 +27,12 @@
   */
 
   var js_base_path = base_path + '/js/';
-  var js_source = js_base_path + '/main.js';
-
+  var js_source = [
+    js_base_path + '/main.js',
+    js_base_path + '/maps.js',
+    js_base_path + '/theme.js',
+    js_base_path + '/visualizations.js',
+  ];
 
   gulp.task('webserver', function() {
     gulp_connect.server({
@@ -55,13 +60,24 @@
 
   });
 
+  gulp.task('angular', function () {
+
+    gulp.src(['js/angular/**/app.js', 'js/angular/**/*.js'])
+    .pipe(gulp_concat('angular.app.min.js'))
+    .pipe(gulp_uglify())
+    .pipe(gulp.dest(base_path + 'js/minified'));
+
+  })
+
   gulp.task('scripts', function() {
+
     return gulp.src(
       js_source
       )
     .pipe(gulp_rename({suffix: '.min'}))
     .pipe(gulp_uglify())
-    .pipe(gulp.dest(base_path + 'js'));
+    .pipe(gulp.dest(base_path + 'js/minified'));
+    
   });
 
   gulp.task('watch', function(){
@@ -72,11 +88,11 @@
     js_source,
     '*.html'
     ];
-    gulp.watch( watch_files, ['sass', 'scripts'] );
+    gulp.watch( watch_files, ['sass', 'scripts', 'angular'] );
 
   });
 
 
-  gulp.task('build', ['sass', 'scripts', 'webserver', 'watch']);
+  gulp.task('build', ['sass', 'scripts', 'angular', 'webserver', 'watch']);
 
 })();
