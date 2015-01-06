@@ -1,7 +1,17 @@
 var cumulativeRiskChart = (function() {
 
-  var _draw = function(_element) {
+  var barWidth,
+    barHeight,
+    margins,
+    data,
+    lineColours,
+    chart,
+    scale;
 
+  var _draw = function(_element, _data, settings) {
+
+    data = _data;
+    lineColours = settings.lineColours;
 
     function truncate(str, maxLength, suffix) {
       if(str.length > maxLength) {
@@ -13,11 +23,11 @@ var cumulativeRiskChart = (function() {
     }
 
     var margin = {top: 20, right: 200, bottom: 0, left: 20},
-    width = 400,
+    width = 300,
     height = 200;
 
 
-    var domain0 = [+new Date("2013-01-01"), +new Date()];
+    var domain0 = [+new Date("2014-01-01"), +new Date()];
 
     var c = d3.scale.category20c(); // ["#3F3931", "#9B8B79", "#B1A08E", "#CFBEA9", "#F2E5D3"];
 
@@ -29,67 +39,96 @@ var cumulativeRiskChart = (function() {
     .scale(x)
     .orient("top");
 
-    // var formatYears = d3.format("0000");
-    // xAxis.tickFormat(formatYears);
+    var customTimeFormat = d3.time.format.multi([
+      ["%b", function(d) { return d.getMonth(); }],
+      ["%Y", function() { return true; }]
+      ]);
+    var formatYears = d3.time.format("%b");
+    xAxis.tickFormat(customTimeFormat);
 
     var svg = d3.select(_element).append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    .style("margin-left", margin.left + "px")
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .style("margin-left", margin.left + "px");
 
 
-    d3.json("data-tmp.json", function(data) {
       var domain0 = [+new Date("2013-01-01"), +new Date()];
       var xScale = d3.time.scale.utc()
       .domain(domain0)
       .range([0, width]);
 
       svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + 0 + ")")
-      .call(xAxis);
+      .attr("height", 0)
+      .attr("class", "xaxis axis")
+      .call(xAxis)
+      .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
 
-      for (var j = 0; j < data.length; j++) {
+      svg.selectAll(".xaxis text")  // select all the text elements for the xaxis
+      .attr("transform", "rotate(-30)");
+
+      //svg.selectAll(".xaxis text")  // select all the text elements for the xaxis
+      //.attr("transform", "translate(-5,5)rotate(-30)");
+
+
+
+
+
+      var btr = data.blood_test_results;
+
+
+      for (var j = 0; j < btr.length; j++) {
+
         var g = svg.append("g").attr("class","journal");
 
         var circles = g.selectAll("circle")
-        .data(data[j]['articles'])
+        .data(btr[j].test_results)
         .enter()
         .append("circle");
 
         var text = g.selectAll("text")
-        .data(data[j]['articles'])
+        .data(btr[j].test_results)
         .enter()
         .append("text");
 
         var rScale = d3.scale.linear()
-        .domain([0, d3.max(data[j]['articles'], function(d) { return d.value; })])
-        .range([2, 9]);
+        .domain([0, d3.max(btr[j].test_results, function(d) { return d.value; })])
+        .range([1, 10]);
 
         circles
         .attr("cx", function(d, i) {
-          return xScale(new Date(d.date));
+          return xScale(new Date(d.date)) + margin.left;
         })
-        .attr("cy", j*20+20)
+        .attr("cy", j*30 + 20 + margin.top)
         .attr("r", function(d) { return rScale(d.value); })
-        .style("fill", function(d) { return c(j); });
+        .style("fill", function(d) {
+
+
+          var x = _.find(btr[j].risk_range, function(rr) {
+            return rr.range_band[0] <= d.value && d.value <= rr.range_band[1];
+          });
+
+          var lineColours = {
+            optimal : "#A7C520",
+            medium  : "#EBC85E",
+            high    : "#E87352"
+          }
+          return lineColours[x.value]
+        });
 
         text
-        .attr("y", j*20+25)
-        .attr("x",function(d, i) { return xScale(new Date(d.date))-5; })
+        .attr("y", j*30+25+ margin.top)
+        .attr("x",function(d, i) { return xScale(new Date(d.date))-5 + margin.left; })
         .attr("class","value")
         .text(function(d){ return d.value; })
-        .style("fill", function(d) { return c(j); })
+        .style("fill", function(d) { return "#666"; }) //c(j); })
         .style("display","none");
 
         g.append("text")
-        .attr("y", j*20+25)
-        .attr("x",width+20)
+        .attr("y", j*30+25+ margin.top)
+        .attr("x",width+20 + margin.left)
         .attr("class","label")
-        .text(truncate(data[j]['name'],30,"..."))
-        .style("fill", function(d) { return c(j); })
+        .text(btr[j].name + " (" + btr[j].units + ")" )
+        .style("fill", function(d) { return "#666"; }) //c(j); })
         .on("mouseover", mouseover)
         .on("mouseout", mouseout);
       };
@@ -105,7 +144,6 @@ var cumulativeRiskChart = (function() {
         d3.select(g).selectAll("circle").style("display","block");
         d3.select(g).selectAll("text.value").style("display","none");
       }
-    });
 
   }
 

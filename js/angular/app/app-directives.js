@@ -26,4 +26,26 @@ angular.module("app")
         }, true);
       }
     };
-  });
+  })
+  .directive("summaryChartDirective", function() {
+
+    return {
+      template: "<div class='summary-chart'></div>",
+      restrict: "E",
+      scope: {},
+      replace: false,
+      link: function (scope, element, attrs) {
+
+        // watches for the parent controller to retrieve the data
+        var unwatch = scope.$parent.$watch("responseData", function(responseData) {
+          if (angular.isObject(responseData) && angular.isArray(responseData.blood_test_results)) {
+
+            $(".summary-chart").createSummary(responseData); // create directive
+
+            // removing watcher
+            unwatch();
+          }
+        }, true);
+      }
+    };
+  })

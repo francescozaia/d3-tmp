@@ -120,11 +120,11 @@ var singleRiskChart = (function() {
 
     var marker = chart.append("circle")
     .attr("class", "dot")
-    .attr("data-title", "<p class='first'><span class='big'>" + data.test_results[0].test_result.value + "</span> " + data.units + "</p><p class='second'>" + data.marker_code + "</p>")
+    .attr("data-title", "<p class='first'><span class='big'>" + data.test_results[0].value + "</span> " + data.units + "</p><p class='second'>" + data.marker_code + "</p>")
     .attr("r", 0)
     .attr("opacity", 0)
     .attr("cx", function(d) {
-      var x = scale(data.test_results[0].test_result.value)
+      var x = scale(data.test_results[0].value)
       return x;
     })
     .attr("cy", barHeight/2)
@@ -141,12 +141,12 @@ var singleRiskChart = (function() {
 
     //var plus = chart.append("line")
     //  .attr("x1", function(d) {
-    //    var x = scale(data.test_results[0].test_result.value) + _radius;
+    //    var x = scale(data.test_results[0].value) + _radius;
     //    return x;
     //  })
     //  .attr("y1", barHeight/2 + _radius - 5)
     //  .attr("x2", function(d) {
-    //    var x = scale(data.test_results[0].test_result.value) + _radius;
+    //    var x = scale(data.test_results[0].value) + _radius;
     //    return x;
     //  })
     //  .attr("y2", barHeight/2 + _radius + 5)
@@ -155,12 +155,12 @@ var singleRiskChart = (function() {
     //
     //var minus = chart.append("line")
     //  .attr("x1", function(d) {
-    //    var x = scale(data.test_results[0].test_result.value) + _radius - 5;
+    //    var x = scale(data.test_results[0].value) + _radius - 5;
     //    return x;
     //  })
     //  .attr("y1", barHeight/2 + _radius)
     //  .attr("x2", function(d) {
-    //    var x = scale(data.test_results[0].test_result.value) + _radius + 5;
+    //    var x = scale(data.test_results[0].value) + _radius + 5;
     //    return x;
     //  })
     //  .attr("y2", barHeight/2 + _radius)

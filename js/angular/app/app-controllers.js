@@ -5,6 +5,7 @@ angular.module("app")
     userDataPromise.then(function(response) {
       if (true) {
         $scope.responseData = response.data;
+        
       } else {
         $log.error("response not correct");
       }

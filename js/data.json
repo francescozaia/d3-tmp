@@ -30,15 +30,18 @@
       "marker_code": "Weight",
       "long_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "advice": "",
-      "units": "pounds full",
-      "test_dates": ["2014-12-19"],
-      "test_results": [{
-        "test_result": {
+      "units": "pounds",
+      "test_results": [
+        {
           "id": 2998849,
           "value": 140,
           "date": "2014-12-19"
+        },{
+          "id": 2998849,
+          "value": 100,
+          "date": "2013-12-19"
         }
-      }],
+      ],
       "risk_range": [{
         "value": "optimal",
         "range_band": [0, 250]
@@ -52,14 +55,18 @@
       "long_description": "",
       "advice": "",
       "units": "Kg/m2",
-      "test_dates": ["2014-12-19"],
-      "test_results": [{
-        "test_result": {
+      "test_results": [
+        {
           "id": 2998851,
           "value": 65,
           "date": "2014-12-19"
+        },
+        {
+          "id": 2998851,
+          "value": 60,
+          "date": "2013-12-19"
         }
-      }],
+      ],
       "risk_range": [{
         "value": "high",
         "range_band": [0, 18.5]
@@ -81,15 +88,19 @@
       "marker_code": "test",
       "long_description": "",
       "advice": "",
-      "units": "test",
-      "test_dates": ["2014-12-19"],
-      "test_results": [{
-        "test_result": {
+      "units": "sandwiches/day",
+      "test_results": [
+        {
           "id": 2998849,
-          "value": 20,
+          "value": 17,
           "date": "2014-12-19"
+        },
+        {
+          "id": 2998849,
+          "value": 46,
+          "date": "2013-12-19"
         }
-      }],
+      ],
       "risk_range": [{
         "value": "optimal",
         "range_band": [0, 20]
@@ -109,14 +120,17 @@
       "long_description": "",
       "advice": "",
       "units": "steps",
-      "test_dates": ["2014-12-19"],
-      "test_results": [{
-        "test_result": {
+      "test_results": [
+        {
           "id": 2998849,
           "value": 3400,
           "date": "2014-12-19"
-        }
-      }],
+        },
+        {
+          "id": 2998851,
+          "value": 3200,
+          "date": "2013-12-19"
+        }],
       "risk_range": [{
         "value": "optimal",
         "range_band": [4000, 10000]
@@ -136,14 +150,18 @@
       "long_description": "",
       "advice": "",
       "units": "cigarettes",
-      "test_dates": ["2014-12-19"],
-      "test_results": [{
-        "test_result": {
+      "test_results": [
+        {
           "id": 2998849,
           "value": 4,
           "date": "2014-12-19"
+        },
+        {
+          "id": 2998851,
+          "value": 30,
+          "date": "2013-12-19"
         }
-      }],
+      ],
       "risk_range": [{
         "value": "medium",
         "range_band": [0, 6]
@@ -151,6 +169,49 @@
         "value": "high",
         "range_band": [6, 40]
       }]
+    },
+    {
+      "id": 5,
+      "name": "Heart",
+      "description": "How's going with your heart'",
+      "marker_code": "bpm",
+      "long_description": "",
+      "advice": "",
+      "units": "bpm",
+      "test_results": [
+        {
+          "id": 2998849,
+          "value": 100,
+          "date": "2014-12-19"
+        },
+        {
+          "id": 2998851,
+          "value": 99,
+          "date": "2013-12-19"
+        }
+      ],
+      "risk_range": [
+        {
+          "value": "high",
+          "range_band": [0, 60]
+        },
+        {
+          "value": "medium",
+          "range_band": [60, 90]
+        },
+        {
+          "value": "optimal",
+          "range_band": [90, 120]
+        },
+        {
+          "value": "medium",
+          "range_band": [120, 150]
+        },
+        {
+          "value": "high",
+          "range_band": [150, 200]
+        }
+      ]
     }
   ]
 }

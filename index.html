@@ -13,10 +13,11 @@
   <script src="./js/libs/modernizr-latest.js"></script>
 
   <script src="./js/libs/angular.js/1.3.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.min.js"></script>
 
   <link href="./css/libs/bootstrap.min.css" media="screen" rel="stylesheet">
   <link href="./css/libs/animate.css" media="screen" rel="stylesheet">
-  <link href="./css/style.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
   <link href="./css/print.min.css" media="print" rel="stylesheet">
   <!--[if lt IE 9]><script src="js/libs/respond.min.js"></script><![endif]-->
     <!--[if gte IE 9]>
@@ -182,15 +183,56 @@
                 <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Your Summary</a></h1></div>
                 <div class="post-desc">
                   <ul>
-                    <li><a href="#weight">Weight, Nutrition &amp; lifestyle</a></li>
-                    <li><a href="#cardiovascular">Cardiovascular Health</a></li>
-                    <li><a href="#doctor-recommendations">Doctor recommendations</a></li>
+                    <li><a href="#weight" class="anchor-scroll">Weight, Nutrition &amp; lifestyle</a></li>
+                    <li><a href="#cardiovascular" class="anchor-scroll">Cardiovascular Health</a></li>
+                    <li><a href="#doctor-recommendations" class="anchor-scroll">Doctor recommendations</a></li>
                   </ul>
-                  <div class="top-chart"></div>
-                  <img src="http://placehold.it/1200x600&text=big chart here!"style="width:100%">
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <!-- tabs -->
+                <div class="tabs_framed">
+                  <div class="inner">
+                    <ul class="tabs red clearfix tab_id4 bookmarks2 active_bookmark2">
+                      <li class="first active"><a href="#health-chart" data-toggle="tab" hidefocus="true" style="outline: none;">You health chart</a></li>
+                      <li class="last"><a href="#table-view" data-toggle="tab" hidefocus="true" style="outline: none;">Table view</a></li>
+                    </ul>
+
+                    <div class="tab-content boxed clearfix">
+                      <div class="tab-pane fade clearfix active in" id="health-chart">
+                        <h2 class="white">You health chart</h2>
+                        <p>You health chart explains you...</p>
+                        <div>
+                          <summary-chart-directive></summary-chart-directive>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade clearfix" id="table-view">
+                        <h2>Table view</h2>
+                        <p>For your doctor. Print it now.</p>
+                        <div class="table-responsive">
+                          <table class="table table-hover table-striped">
+                            <tr>
+                              <th class="info">Thing</th>
+                              <th class="info">Value</th>
+                            </tr>
+                            <tr ng-repeat="blood_test_result in responseData.blood_test_results">
+                              <td>{{ blood_test_result.description }}</td>
+                              <td>{{ blood_test_result.test_results[0].value }} {{ blood_test_result.units }}</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/ tabs -->
+              </div>
+            </div>
+
+
 
             <div id="weight" class="post-item boxed" style="page-break-before: always;">
               <div class="inner">
@@ -263,7 +305,7 @@
                       <p>Good is 30 mins a day for 5 days a week.</p>
                     </div>
                     <div class="col-sm-7 col-chart">
-                      Todo
+                      <app-directive chart-id="4"></app-directive>
                     </div>
                   </div>
                 </div>
@@ -285,15 +327,15 @@
                 <div>
                   <div class="row">
                     <div class="col-sm-12">
-                      <h3>Weight</h3>
+                      <h3>Heart rate</h3>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-5">
-                      <p>While weight is an imperfect measure of health, excess weight in the form of excess body fat is a known risk factor for insulin resistance, diabetes, cardiovascular disease, arthritis, cancer, and many other chronic health problems!</p>
+                      <p>Todo</p>
                     </div>
                     <div class="col-sm-7">
-                      <app-directive chart-id="4"></app-directive>
+                      <app-directive chart-id="5"></app-directive>
                     </div>
                   </div>
                 </div>
@@ -336,10 +378,10 @@
                   </div>
                   <div class="comment-text">
                     <div class="comment-author clearfix">
-                      <a href="#" class="link-author" hidefocus="true" style="outline: none;">Dr. Gas</a>
+                      <a href="#" class="link-author" hidefocus="true" style="outline: none;">Dr. Bill</a>
                     </div>
                     <div class="comment-entry">
-                      Eat less, fatty! :)
+                      Eat less! :)
                     </div>
                   </div>
                   <div class="clear"></div>
