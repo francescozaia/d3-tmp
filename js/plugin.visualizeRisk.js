@@ -40,13 +40,13 @@ $(function() {
 
     // Extending default options.
     var settings = $.extend({
-      barHeight : 16,
-      barWidth  : 160,
-      margins   : {
-        left: 16,
-        right: 16,
-        top: 16,
-        bottom: 32
+      chartHeight : 200, // make this dynamic?
+      chartWidth  : 360,
+      margins     : {
+        left: 24,
+        right: 160,
+        top: 24,
+        bottom: 24
       },
       lineColours: {
         optimal : "#A7C520",
