@@ -29,15 +29,49 @@ var cumulativeRiskChart = (function() {
 
     var domain0 = [+new Date("2014-01-01"), +new Date()];
 
+
+
+
+
+    // var yAxis = d3.svg.axis()
+    // .scale(y)
+    // .tickSize(width)
+    // .tickFormat(formatCurrency)
+    // .orient("right");
+
+
+
     var c = d3.scale.category20c(); // ["#3F3931", "#9B8B79", "#B1A08E", "#CFBEA9", "#F2E5D3"];
 
     var x = d3.time.scale.utc()
     .domain(domain0)
     .range([0, width]);
 
+    var y = d3.scale.linear()
+    .domain([0, 100])
+    .range([height, 0]);
+
     var xAxis = d3.svg.axis()
     .scale(x)
     .orient("top");
+
+    // function formatCurrency(d) {
+    //   var s = formatNumber(d / 1e6);
+    //   return d === y.domain()[1]
+    //   ? "$" + s + " million"
+    //   : s;
+    // }
+    // function customAxis(g) {
+    //   g.selectAll("text")
+    //   .attr("x", 4)
+    //   .attr("dy", -4);
+    // }
+    // var formatNumber = d3.format(".1f");
+    // var yAxis = d3.svg.axis()
+    // .scale(y)
+    // .tickSize(width)
+    // .tickFormat(formatCurrency)
+    // .orient("right");
 
     var customTimeFormat = d3.time.format.multi([
       ["%b", function(d) { return d.getMonth(); }],
@@ -61,14 +95,15 @@ var cumulativeRiskChart = (function() {
       .attr("height", 0)
       .attr("class", "xaxis axis")
       .call(xAxis)
-      .attr("transform", "translate(" + margin.left + ", " + margin.top + ")")
+      .attr("transform", "translate(" + margin.left + ", " + margin.top + ")");
 
-      svg.selectAll(".xaxis text")  // select all the text elements for the xaxis
+      svg.selectAll(".xaxis text")
       .attr("transform", "rotate(-30)");
 
-      //svg.selectAll(".xaxis text")  // select all the text elements for the xaxis
-      //.attr("transform", "translate(-5,5)rotate(-30)");
-
+      // var gy = svg.append("g")
+      // .attr("class", "y axis")
+      // .call(yAxis)
+      // .call(customAxis);
 
 
 
@@ -129,20 +164,25 @@ var cumulativeRiskChart = (function() {
         .attr("class","label")
         .text(btr[j].name + " (" + btr[j].units + ")" )
         .style("fill", function(d) { return "#666"; }) //c(j); })
-        .on("mouseover", mouseover)
-        .on("mouseout", mouseout);
+        .on("mouseover", onMouseover)
+        .on("mouseout", onMouseout)
+        .on("click", onClick);
       };
 
-      function mouseover(p) {
+      function onMouseover(p) {
         var g = d3.select(this).node().parentNode;
         d3.select(g).selectAll("circle").style("display","none");
         d3.select(g).selectAll("text.value").style("display","block");
       }
 
-      function mouseout(p) {
+      function onMouseout(p) {
         var g = d3.select(this).node().parentNode;
         d3.select(g).selectAll("circle").style("display","block");
         d3.select(g).selectAll("text.value").style("display","none");
+      }
+
+      function onClick(p) {
+
       }
 
   }

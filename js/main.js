@@ -27,6 +27,19 @@ $(function() {
     }
   });
 
+  // Buttons
+  $(".btn").hover(function(){
+    $(this).stop().animate({"opacity": 0.8});
+  },function(){
+    $(this).stop().animate({"opacity": 1});
+  });
+  $('a.btn, span.btn').on('mousedown', function(){
+    $(this).addClass('active')
+  });
+  $('a.btn, span.btn').on('mouseup mouseout', function(){
+    $(this).removeClass('active')
+  });
+
   var initCarousels = function() {
 
     // Testimonials carousel

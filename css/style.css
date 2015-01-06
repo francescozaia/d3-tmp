@@ -95,6 +95,7 @@ button, input, select, textarea {
 
 .navbar {
   background-color: #FFF;
+  border-radius: 0;
   min-height: 80px; }
 
 .content, .sidebar {
@@ -2554,6 +2555,9 @@ td.ui-datepicker-other-month span {
 .small-chart .axis text, .summary-chart .axis text {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px; }
+
+.summary-chart .label {
+  cursor: pointer; }
 
 /*---------*/
 /* Tooltip */
