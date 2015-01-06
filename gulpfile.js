@@ -30,8 +30,9 @@
   var js_source = [
     js_base_path + '/main.js',
     js_base_path + '/maps.js',
-    js_base_path + '/theme.js',
-    js_base_path + '/visualizations.js',
+    js_base_path + '/plugin.visualizeRisk.js',
+    js_base_path + '/visualizations/singleRiskChart.js',
+    js_base_path + '/visualizations/cumulativeRiskChart.js',
   ];
 
   gulp.task('webserver', function() {
@@ -77,7 +78,7 @@
     .pipe(gulp_rename({suffix: '.min'}))
     .pipe(gulp_uglify())
     .pipe(gulp.dest(base_path + 'js/minified'));
-    
+
   });
 
   gulp.task('watch', function(){
