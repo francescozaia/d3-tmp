@@ -50,8 +50,6 @@ var cumulativeRiskChart = (function() {
     _drawAxis();
 
     _drawBands();
-
-    _drawLabels();
   }
 
   var _drawAxis = function() {
