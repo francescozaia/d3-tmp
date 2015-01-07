@@ -22,6 +22,7 @@ var cumulativeRiskChart = (function() {
     height = data.blood_test_results.length * 30 + 10;
 
     chart = d3.select(_element).append("svg")
+      .attr("id", "chart")
       .attr("width", width + margins.left + margins.right)
       .attr("height", height + margins.top + margins.bottom)
       .style("margin-left", margins.left + "px");
@@ -104,6 +105,11 @@ var cumulativeRiskChart = (function() {
 
   var _drawBands = function() {
 
+    var circlesRadius = 10;
+    var circlesDistance = 30;
+    var yPadding = 20;
+    var xPadding = 20;
+
     for (var j = 0; j < data.blood_test_results.length; j++) {
 
       var currentBloodTestResult = data.blood_test_results[j];
@@ -115,7 +121,7 @@ var cumulativeRiskChart = (function() {
 
       var rScale = d3.scale.linear()
         .domain(rDomain)
-        .range([1, 10]);
+        .range([1, circlesRadius]);
 
 
       g.selectAll("circle")
@@ -125,36 +131,33 @@ var cumulativeRiskChart = (function() {
         .attr("cx", function(d, i) {
           return xScale(new Date(d.date)) + margins.left;
         })
-        .attr("cy", j*30 + 20 + margins.top)
+        .attr("cy", j*circlesDistance + margins.top + yPadding)
         .attr("r", function(d) { return rScale(d.value); })
         .style("fill", function(d) {
           // returning the appropriate colour
           var x = _.find(currentBloodTestResult.risk_range, function(rr) {
             return rr.range_band[0] <= d.value && d.value <= rr.range_band[1];
           });
-
-          return lineColours[x.value]
+          return lineColours[x.value];
         });
 
       g.selectAll("text")
         .data(currentBloodTestResult.test_results)
         .enter()
         .append("text")
-        .attr("y", j*30+25+ margins.top)
+        .attr("y", j*circlesDistance + margins.top + yPadding + 5)
         .attr("x",function(d, i) { return xScale(new Date(d.date)) + margins.left; })
         .attr("text-anchor", "middle")
         .attr("class","value")
         .text(function(d){ return d.value; })
-        .style("fill", function(d) { return "#666"; })
         .style("display","none");
 
       var label = g.append("text")
-        .attr("y", j*30+25+ margins.top)
-        .attr("x",width+20 + margins.left)
+        .attr("y", j*circlesDistance + margins.top + yPadding + 5)
+        .attr("x",width + margins.left + xPadding)
         .attr("data-anchor", currentBloodTestResult.name.toLowerCase().replace(/\s/g,"-"))
         .attr("class","label")
         .text(currentBloodTestResult.name + " (" + currentBloodTestResult.units + ")" )
-        .style("fill", function(d) { return "#666"; })
 
       $(label[0]).on("mouseover", function(d) {
         var g = d3.select(this).node().parentNode;

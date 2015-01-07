@@ -44,7 +44,7 @@ $(function() {
       chartWidth  : 360,
       margins     : {
         left: 24,
-        right: 160,
+        right: 200,
         top: 24,
         bottom: 24
       },

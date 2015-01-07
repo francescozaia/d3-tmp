@@ -2557,8 +2557,14 @@ td.ui-datepicker-other-month span {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px; }
 
-.summary-chart .label {
-  cursor: pointer; }
+.summary-chart {
+  text-align: center; }
+  .summary-chart .label {
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 400;
+    fill: #AAA;
+    stroke: none; }
 
 /*---------*/
 /* Tooltip */
