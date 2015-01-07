@@ -6,7 +6,8 @@ var cumulativeRiskChart = (function() {
     data,
     lineColours,
     chart,
-    scale;
+    xScale,
+    yScale;
 
   var _draw = function(_element, _data, settings) {
 
@@ -18,170 +19,162 @@ var cumulativeRiskChart = (function() {
     margins = settings.margins;
     lineColours = settings.lineColours;
 
-    function truncate(str, maxLength, suffix) {
-      if(str.length > maxLength) {
-        str = str.substring(0, maxLength + 1);
-        str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
-        str = str + suffix;
-      }
-      return str;
-    }
+    height = data.blood_test_results.length * 30 + 10;
 
-    var btr = data.blood_test_results;
+    chart = d3.select(_element).append("svg")
+      .attr("width", width + margins.left + margins.right)
+      .attr("height", height + margins.top + margins.bottom)
+      .style("margin-left", margins.left + "px");
 
-    height = btr.length * 30 + 10;
+    // xDomain is time-based and goes from 2013-01-01 to today
+    var xDomain = [+new Date("2013-01-01"), +new Date()];
 
+    // xDomain is discrete (ordinal) and contains all the names
+    var yDomain = _.pluck(data.blood_test_results, 'name');
 
+    xScale = d3.time.scale.utc()
+      .domain(xDomain)
+      .range([0, width]);
 
-    var domain0 = [+new Date("2013-01-01"), +new Date()];
+    yScale = d3.scale.ordinal()
+      .domain(yDomain)
+      .rangeBands([0, height]);
 
-    // var yAxis = d3.svg.axis()
-    // .scale(y)
-    // .tickSize(width)
-    // .tickFormat(formatCurrency)
-    // .orient("right");
+    /*
+    var yScale = d3.scale.linear()
+      .domain([0, 100])
+      .range([0, height]);
+    */
 
-    var c = d3.scale.category20c(); // ["#3F3931", "#9B8B79", "#B1A08E", "#CFBEA9", "#F2E5D3"];
+    _drawAxis();
 
-    var xScale = d3.time.scale.utc()
-    .domain(domain0)
-    .range([0, width]);
+    _drawBands();
 
-    var y = d3.scale.linear()
-    .domain([0, 100])
-    .range([height, 0]);
+    _drawLabels();
+  }
 
-    var xAxis = d3.svg.axis()
-    .scale(xScale)
-    .orient("top");
+  var _drawAxis = function() {
 
-    var xAxisBottom = d3.svg.axis()
-    .scale(xScale)
-    .orient("bottom");
+    // Axis Scales and Orientations
 
-    // function formatCurrency(d) {
-    //   var s = formatNumber(d / 1e6);
-    //   return d === y.domain()[1]
-    //   ? "$" + s + " million"
-    //   : s;
-    // }
-    // function customAxis(g) {
-    //   g.selectAll("text")
-    //   .attr("x", 4)
-    //   .attr("dy", -4);
-    // }
-    // var formatNumber = d3.format(".1f");
-    // var yAxis = d3.svg.axis()
-    // .scale(y)
-    // .tickSize(width)
-    // .tickFormat(formatCurrency)
-    // .orient("right");
-
+    // customTimeFormat is abbreviated month name and year
     var customTimeFormat = d3.time.format.multi([
       ["%b", function(d) { return d.getMonth(); }],
       ["%Y", function() { return true; }]
       ]);
-    var formatYears = d3.time.format("%b");
-    xAxis.tickFormat(customTimeFormat);
-    xAxisBottom.tickFormat(customTimeFormat);
 
-    var svg = d3.select(_element).append("svg")
-    .attr("width", width + margins.left + margins.right)
-    .attr("height", height + margins.top + margins.bottom)
-    .style("margin-left", margins.left + "px");
+    var xAxis = d3.svg.axis()
+      .scale(xScale)
+      .tickFormat(customTimeFormat)
+      .orient("top");
 
-    // into
+    var xAxisBottom = d3.svg.axis()
+      .scale(xScale)
+      .tickFormat(customTimeFormat)
+      .orient("bottom");
 
-    svg.append("g")
-    .attr("height", 0)
-    .attr("class", "xaxis axis")
-    .call(xAxis)
-    .attr("transform", "translate(" + margins.left + ", " + margins.top + ")");
+    var yAxis = d3.svg.axis()
+      .scale(yScale)
+      .tickSize(width)
+      .orient("right");
 
-    svg.append("g")
-    .attr("height", 0)
-    .attr("class", "xaxis axis")
-    .call(xAxisBottom)
-    .attr("transform", "translate(" + margins.left + ", " + parseInt(margins.top + margins.bottom + height - 20, 10) + ")");
+    // Appending Axis
 
-    svg.selectAll(".xaxis text")
-    .attr("transform", "rotate(-30)");
+    chart.append("g")
+      .attr("class", "xaxis axis")
+      .call(xAxis)
+      .attr("transform", "translate(" + margins.left + ", " + margins.top + ")");
 
-    // var gy = svg.append("g")
-    // .attr("class", "y axis")
-    // .call(yAxis)
-    // .call(customAxis);
+    chart.append("g")
+      .attr("class", "xaxis axis")
+      .call(xAxisBottom)
+      .attr("transform", "translate(" + margins.left + ", " + parseInt(margins.top + height, 10) + ")");
 
+    chart.selectAll(".xaxis text")
+      .attr("transform", "rotate(-30)");
 
+    /*
+    chart.append("g")
+      .attr("class", "yaxis axis")
+      .call(yAxis)
+      .attr("transform", "translate(" + margins.left + ", " + margins.top + ")");
+      */
 
-    for (var j = 0; j < btr.length; j++) {
+  }
 
-      var g = svg.append("g").attr("class","journal");
+  var _drawBands = function() {
 
-      var circles = g.selectAll("circle")
-        .data(btr[j].test_results)
-        .enter()
-        .append("circle");
+    for (var j = 0; j < data.blood_test_results.length; j++) {
 
-      var text = g.selectAll("text")
-        .data(btr[j].test_results)
-        .enter()
-        .append("text");
+      var currentBloodTestResult = data.blood_test_results[j];
+
+      var g = chart.append("g");
+
+      // rDomain is linear and goes from 0 to current blood test's max value (between all the samples)
+      var rDomain = [0, d3.max(currentBloodTestResult.test_results, function(d) { return d.value; })];
 
       var rScale = d3.scale.linear()
-        .domain([0, d3.max(btr[j].test_results, function(d) { return d.value; })])
+        .domain(rDomain)
         .range([1, 10]);
 
-      circles
+
+      g.selectAll("circle")
+        .data(currentBloodTestResult.test_results)
+        .enter()
+        .append("circle")
         .attr("cx", function(d, i) {
           return xScale(new Date(d.date)) + margins.left;
         })
         .attr("cy", j*30 + 20 + margins.top)
         .attr("r", function(d) { return rScale(d.value); })
         .style("fill", function(d) {
-          var x = _.find(btr[j].risk_range, function(rr) {
+          // returning the appropriate colour
+          var x = _.find(currentBloodTestResult.risk_range, function(rr) {
             return rr.range_band[0] <= d.value && d.value <= rr.range_band[1];
           });
 
           return lineColours[x.value]
         });
 
-      text
+      g.selectAll("text")
+        .data(currentBloodTestResult.test_results)
+        .enter()
+        .append("text")
         .attr("y", j*30+25+ margins.top)
-        .attr("x",function(d, i) { return xScale(new Date(d.date))-5 + margins.left; })
+        .attr("x",function(d, i) { return xScale(new Date(d.date)) + margins.left; })
+        .attr("text-anchor", "middle")
         .attr("class","value")
         .text(function(d){ return d.value; })
-        .style("fill", function(d) { return "#666"; }) //c(j); })
+        .style("fill", function(d) { return "#666"; })
         .style("display","none");
 
-      g.append("text")
+      var label = g.append("text")
         .attr("y", j*30+25+ margins.top)
         .attr("x",width+20 + margins.left)
+        .attr("data-anchor", currentBloodTestResult.name.toLowerCase().replace(/\s/g,"-"))
         .attr("class","label")
-        .text(btr[j].name + " (" + btr[j].units + ")" )
-        .style("fill", function(d) { return "#666"; }) //c(j); })
-        .on("mouseover", onMouseover)
-        .on("mouseout", onMouseout)
-        .on("click", onClick);
+        .text(currentBloodTestResult.name + " (" + currentBloodTestResult.units + ")" )
+        .style("fill", function(d) { return "#666"; })
+
+      $(label[0]).on("mouseover", function(d) {
+        var g = d3.select(this).node().parentNode;
+        d3.select(g).selectAll("circle").style("display","none");
+        d3.select(g).selectAll("text.value").style("display","block");
+      });
+
+      $(label[0]).on("mouseout", function(d) {
+        var g = d3.select(this).node().parentNode;
+        d3.select(g).selectAll("circle").style("display","block");
+        d3.select(g).selectAll("text.value").style("display","none");
+      });
+
+      $(label[0]).on("click", function(d) {
+        location.hash = d3.select(this).attr("data-anchor");
+      });
     };
 
-    function onMouseover(p) {
-      var g = d3.select(this).node().parentNode;
-      d3.select(g).selectAll("circle").style("display","none");
-      d3.select(g).selectAll("text.value").style("display","block");
-    }
-
-    function onMouseout(p) {
-      var g = d3.select(this).node().parentNode;
-      d3.select(g).selectAll("circle").style("display","block");
-      d3.select(g).selectAll("text.value").style("display","none");
-    }
-
-    function onClick(p) {
-      console.log(p); // :(
-    }
-
   }
+
 
   return {
     draw: _draw

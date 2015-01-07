@@ -2,7 +2,7 @@ angular.module("app")
   .directive("appDirective", function() {
 
     return {
-      templateUrl: "./templates/lsChart.html",
+      templateUrl: "./partials/lsChart.html",
       restrict: "E",
       scope: {
         chartId: "@" // using the chartId set as HTML attribute to pick the appropriate JSON id
