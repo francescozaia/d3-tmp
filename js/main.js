@@ -61,16 +61,6 @@ $(function() {
       }
     });
 
-    // Partners carousel
-    $('#partners').carouFredSel({
-      next: "#partners-next",
-      prev: "#partners-prev",
-      auto: 8000,
-      scroll: {
-        items: 1
-      }
-    });
-
   }
 
   initCarousels();

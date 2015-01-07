@@ -1,4 +1,4 @@
-var cumulativeRiskChart = (function() {
+var summaryChart = (function() {
 
   var width,
     height,
@@ -8,6 +8,11 @@ var cumulativeRiskChart = (function() {
     chart,
     xScale,
     yScale;
+
+  var circlesRadius = 16;
+  var circlesDistance = 36;
+  var yPadding = 20;
+  var xPadding = 20;
 
   var _draw = function(_element, _data, settings) {
 
@@ -19,7 +24,7 @@ var cumulativeRiskChart = (function() {
     margins = settings.margins;
     lineColours = settings.lineColours;
 
-    height = data.blood_test_results.length * 30 + 10;
+    height = data.blood_test_results.length * circlesDistance + 10;
 
     chart = d3.select(_element).append("svg")
       .attr("id", "chart")
@@ -92,21 +97,21 @@ var cumulativeRiskChart = (function() {
     chart.selectAll(".xaxis text")
       .attr("transform", "rotate(-30)");
 
-    /*
+
     chart.append("g")
       .attr("class", "yaxis axis")
       .call(yAxis)
-      .attr("transform", "translate(" + margins.left + ", " + margins.top + ")");
-      */
+      .attr("transform", "translate(" + margins.left  + ", " + margins.top + ")");
+
+    chart.selectAll(".yaxis text")
+      .attr("display", "none");
+
 
   }
 
   var _drawBands = function() {
 
-    var circlesRadius = 10;
-    var circlesDistance = 30;
-    var yPadding = 20;
-    var xPadding = 20;
+
 
     for (var j = 0; j < data.blood_test_results.length; j++) {
 

@@ -28,11 +28,8 @@
 
   var js_base_path = base_path + '/js/';
   var js_source = [
-    js_base_path + '/main.js',
-    js_base_path + '/maps.js',
-    js_base_path + '/plugin.visualizeRisk.js',
-    js_base_path + '/visualizations/singleRiskChart.js',
-    js_base_path + '/visualizations/cumulativeRiskChart.js',
+    js_base_path + '/*.js',
+    js_base_path + '/visualizations/*.js'
   ];
 
   gulp.task('webserver', function() {
@@ -63,7 +60,7 @@
 
   gulp.task('angular', function () {
 
-    gulp.src(['js/angular/**/app.js', 'js/angular/**/*.js'])
+    return gulp.src(['js/angular/**/app.js', 'js/angular/**/*.js'])
     .pipe(gulp_concat('angular.app.min.js'))
     .pipe(gulp_uglify())
     .pipe(gulp.dest(base_path + 'js/minified'));
@@ -72,9 +69,8 @@
 
   gulp.task('scripts', function() {
 
-    return gulp.src(
-      js_source
-      )
+    return gulp.src(js_source)
+    .pipe(gulp_concat('scripts.js'))
     .pipe(gulp_rename({suffix: '.min'}))
     .pipe(gulp_uglify())
     .pipe(gulp.dest(base_path + 'js/minified'));

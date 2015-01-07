@@ -13,11 +13,10 @@
   <script src="./js/libs/modernizr-latest.js"></script>
 
   <script src="./js/libs/angular.js/1.3.8/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.min.js"></script>
 
   <link href="./css/libs/bootstrap.min.css" media="screen" rel="stylesheet">
   <link href="./css/libs/animate.css" media="screen" rel="stylesheet">
-  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/style.min.css" rel="stylesheet">
   <link href="./css/print.min.css" media="print" rel="stylesheet">
   <!--[if lt IE 9]><script src="js/libs/respond.min.js"></script><![endif]-->
     <!--[if gte IE 9]>
@@ -25,9 +24,6 @@
     .gradient {filter: none !important;}
     </style>
   <![endif]-->
-  <style>
-  [ng\:cloak],[ng-cloak],.ng-cloak{display:none !important}
-  </style>
 </head>
 
 <body ng-controller="AppController">
@@ -41,17 +37,7 @@
 
   <!-- Header -->
   <header>
-    <!--<nav class="navbar navbar-livesmart no-margin-bottom" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" style="padding-top:5px;" href="/"><img src="http://cdn.shopify.com/s/files/1/0662/2703/t/2/assets/logo.png?3464" alt="LiveSmart"></a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="main-nav"></div>
-      </div>
-    </nav>-->
     <div class="container-full">
-      <!-- menu -->
       <div class="row">
         <div class="col-sm-12">
           <!-- Website Menu -->
@@ -68,7 +54,6 @@
           <!--/ Website Menu -->
         </div>
       </div>
-      <!--/ menu -->
     </div>
   </header>
   <!--/ Header -->
@@ -86,7 +71,9 @@
 
           <!-- user title -->
           <div class="widget-container widget_recent_entries boxed">
-            <h2 class="widget-title"><span ng-cloak>{{ responseData.first_name }} {{ responseData.family_name }}</span></h2>
+            <h2 class="widget-title">
+              <span ng-cloak>{{ responseData.first_name }} {{ responseData.family_name }}</span>
+            </h2>
             <div class="inner">
               <ul>
                 <li class="clearfix">
@@ -197,20 +184,22 @@
           <!-- post list -->
           <div class="postlist" style="page-break-before: always;">
 
-            <!-- Weight, Nutrition & lifestyle -->
+            <!-- Summary -->
             <div class="post-item boxed">
               <div class="inner">
                 <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Your Summary</a></h1></div>
                 <div class="post-desc">
                   <ul>
-                    <li><a href="#weight" class="anchor-scroll">Weight, Nutrition &amp; lifestyle</a></li>
-                    <li><a href="#cardiovascular" class="anchor-scroll">Cardiovascular Health</a></li>
-                    <li><a href="#doctor-recommendations" class="anchor-scroll">Doctor recommendations</a></li>
+                    <li><a href="#section-weight" class="anchor-scroll">Weight, Nutrition &amp; lifestyle</a></li>
+                    <li><a href="#section-cardiovascular" class="anchor-scroll">Cardiovascular Health</a></li>
+                    <li><a href="#section-doctor-recommendations" class="anchor-scroll">Doctor recommendations</a></li>
                   </ul>
                 </div>
               </div>
             </div>
+            <!--/ Summary -->
 
+            <!-- Summary chart and tables -->
             <div class="row">
               <div class="col-sm-12">
                 <!-- tabs -->
@@ -252,10 +241,11 @@
                 <!--/ tabs -->
               </div>
             </div>
+            <!--/ Summary chart and tables -->
 
 
-
-            <div id="weight" class="post-item boxed" style="page-break-before: always;">
+            <!-- Weight, Nutrition & lifestyle -->
+            <div id="section-weight" class="post-item boxed" style="page-break-before: always;">
               <div class="inner">
                 <div class="post-title"><h1><a href="#" hidefocus="true" style="outline: none;">Weight, Nutrition &amp; lifestyle</a></h1></div>
                 <div class="post-intro-text">
@@ -335,7 +325,7 @@
             <!--/ Weight, Nutrition & lifestyle -->
 
             <!-- Cardiovascular Health -->
-            <div id="cardiovascular" class="post-item boxed" style="page-break-before: always;">
+            <div id="section-cardiovascular" class="post-item boxed" style="page-break-before: always;">
               <div class="inner">
                 <div class="post-title">
                   <h1><a href="#" hidefocus="true" style="outline: none;">Cardiovascular Health</a></h1>
@@ -388,7 +378,7 @@
           <!--/ postlist-->
 
           <!-- doctor comments -->
-          <div id="doctor-recommendations" class="comment-list clearfix" id="comments" style="page-break-before: always;">
+          <div id="section-doctor-recommendations" class="comment-list clearfix" id="comments" style="page-break-before: always;">
             <h2>Doctor recommendations:</h2>
             <ol>
               <li class="comment first">
@@ -530,37 +520,39 @@
   </footer>
   <!--/ Footer -->
 
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <!-- JS Libs -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
-  <!-- CarouFredSel  -->
-  <script src="./js/libs/jquery.carouFredSel-6.2.1-packed.js"></script>
-
-  <!-- Google Map -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.caroufredsel/6.2.1/jquery.carouFredSel.packed.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+  <!--/ JS Libs -->
 
+  <!-- uncompressed JS -->
+  
   <script src="./js/angular/app/app.js"></script>
   <script src="./js/angular/app/app-services.js"></script>
   <script src="./js/angular/app/app-directives.js"></script>
   <script src="./js/angular/app/app-controllers.js"></script>
 
-  <script src="./js/visualizations/singleRiskChart.js"></script>
-  <script src="./js/visualizations/cumulativeRiskChart.js"></script>
+  <script src="./js/visualizations/singleResultChart.js"></script>
+  <script src="./js/visualizations/summaryChart.js"></script>
+  <script src="./js/plugin.charts.js"></script>
   <script src="./js/maps.js"></script>
   <script src="./js/main.js"></script>
-  <script src="./js/plugin.visualizeRisk.js"></script>
+
+
+  <!--/ uncompressed JS -->
+
+  <!-- compressed JS -->
 
   <!--
   <script src="./js/minified/angular.app.min.js"></script>
-
-  <script src="./js/minified/singleRiskChart.min.js"></script>
-  <script src="./js/minified/cumulativeRiskChart.min.js"></script>
-  <script src="./js/minified/maps.min.js"></script>
-  <script src="./js/minified/main.min.js"></script>
-  <script src="./js/minified/plugin.visualizeRisk.min.js"></script>
+  <script src="./js/minified/scripts.min.js"></script>
   -->
+
+  <!--/ compressed JS -->
 
 </body>
 </html>

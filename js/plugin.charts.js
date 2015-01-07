@@ -4,7 +4,7 @@ $(function() {
   /* jQuery plugin to visualize data */
   /***********************************/
 
-  $.fn.visualizeRisk = function(data, options) {
+  $.fn.createSingleResultChart = function(data, options) {
 
     var _options = options ? options : {};
 
@@ -19,7 +19,7 @@ $(function() {
         bottom: 32
       },
       lineColours: {
-        optimal : "#A7C520",
+        optimal : "#60CD9B",
         medium  : "#EBC85E",
         high    : "#E87352"
       }
@@ -29,12 +29,12 @@ $(function() {
     var elements = $(this);
 
     for (var i = 0; i < elements.length; i += 1) {
-      singleRiskChart.draw(elements[i], data, settings);
+      singleResultChart.draw(elements[i], data, settings);
     }
 
   };
 
-  $.fn.createSummary = function(data, options) {
+  $.fn.createSummaryChart = function(data, options) {
 
     var _options = options ? options : {};
 
@@ -49,7 +49,7 @@ $(function() {
         bottom: 24
       },
       lineColours: {
-        optimal : "#A7C520",
+        optimal : "#60CD9B",
         medium  : "#EBC85E",
         high    : "#E87352"
       }
@@ -59,7 +59,7 @@ $(function() {
     var elements = $(this);
 
     for (var i = 0; i < elements.length; i += 1) {
-      cumulativeRiskChart.draw(elements[i], data, settings);
+      summaryChart.draw(elements[i], data, settings);
     }
 
   };

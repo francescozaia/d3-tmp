@@ -1,11 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700,800);
+/* Mixins */
 /*===================================================*/
 /* GENERAL TYPOGRAPHY */
 /*===================================================*/
 /*-----------------------------------*/
 /* Fonts */
 /*-----------------------------------*/
-/*CSS STRUCTURE:- Global Reset- General Styles- Clear Floats- Typography- Buttons- Custom checkboxes, radios- Rating Stars2. PAGE ITEMS, WIDGETS- Services- Services Style 1- Services Style 2- Services Style 3- Table Pricing- price style 1- price style 2- Sidebar widgets- Widget Categories- Widget Categories style 2- Widget Accordion- Widget Latest Stories, Latest Comments- Widget Follow- Widget Tags- Widget Flickr- Widget Text- Widget Calendar- Full width widgets- Widget Question- Post Items- Post Item Labels- Post Items Default Style- Post Items Style 2- Post Items Style 3- Post Quotes- Post Images- Post Video, Post Audio- Post Intro Text- Comments- Forms- Comment Form- Contact Form- Survey Form- Payment Form- Login Form- Newsletter Form, Search Form- Pagination- Pagination Style 1- Pagination Style 2- Pagination Style 3- Pagination Style 3 Small- Pagination Style 3 Mini- Dividers- Tabs- Toggles- Pull Quotes- Info Boxes- Filters- Checkbox Filter, Radiobox Filter- Filter Results- Sliders- Main Slider- Main Slider Style 1- Main Slider Style 2- Testimonials- Partners- Footers3. INDEX PAGE- Header (Kit Name)- Main Menu- Main Menu with Icons- Dropdown Menu- Grid Menu- Vertical Menu- Progress Bars- Scroll Bars- Avatar Placeholder- Widget Social Buttons- Widget Weather- Image Slider- Image Slider (CarouFredSel)*/
 /* Global reset */
 /*-----------------------------------*/
 /* Global Reset */
@@ -53,15 +53,11 @@ body {
   color: #666;
   -webkit-font-smoothing: subpixel-antialiased;
   position: relative;
-  background: #009d9e;
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwOWQ5ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iIzFkNWU3NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgc3RvcC1jb2xvcj0iIzFkNWU3NyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDlkOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(top, #009d9e 0%, #1d5e77 20%, #1d5e77 80%, #009d9e 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #009d9e), color-stop(20%, #1d5e77), color-stop(80%, #1d5e77), color-stop(100%, #009d9e));
-  background: -webkit-linear-gradient(top, #009d9e 0%, #1d5e77 20%, #1d5e77 80%, #009d9e 100%);
-  background: -o-linear-gradient(top, #009d9e 0%, #1d5e77 20%, #1d5e77 80%, #009d9e 100%);
-  background: -ms-linear-gradient(top, #009d9e 0%, #1d5e77 20%, #1d5e77 80%, #009d9e 100%);
-  background: linear-gradient(to bottom, #009d9e 0%, #1d5e77 20%, #1d5e77 80%, #009d9e 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#009d9e', endColorstr='#009d9e',GradientType=0 ); }
+  background-image: -webkit-linear-gradient(top, #009d9e 0%, #1d5e77 100%);
+  background-image: -o-linear-gradient(top, #009d9e 0%, #1d5e77 100%);
+  background-image: linear-gradient(to bottom, #009d9e 0%, #1d5e77 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF009D9E', endColorstr='#FF1D5E77', GradientType=0); }
 
 ::-moz-selection {
   background: #3BBEC0;
@@ -94,13 +90,14 @@ button, input, select, textarea {
 .omega {
   margin-right: 0 !important; }
 
-.navbar {
-  background-color: #FFF;
-  border-radius: 0;
-  min-height: 80px; }
+.no-margin-bottom {
+  margin-bottom: 0 !important; }
 
-.content, .sidebar {
-  padding: 50px 0; }
+.no-margin-top {
+  margin-top: 0 !important; }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important; }
 
 /* Clear Floats */
 /*-----------------------------------*/
@@ -440,6 +437,13 @@ p {
 .checkbox-large.text-left .custom-checkbox label.checked:after {
   right: 3px; }
 
+.checkBoxes {
+  float: right;
+  width: 45%;
+  padding-top: 8px; }
+  .checkBoxes .custom-checkbox label, .checkBoxes .custom-radio label {
+    padding-left: 27px; }
+
 /* Rating Stars */
 /*-----------------------------------*/
 /* Rating Stars */
@@ -528,35 +532,39 @@ p {
 .map .gmnoprint {
   display: none; }
 
-/*===================================================*/
-/* 2. PAGE ITEMS, WIDGETS */
-/*===================================================*/
-.boxed, a.boxed {
+/* Menu */
+/*-----------------------------------*/
+/* Main Menu */
+/*-----------------------------------*/
+/* Level 0 */
+.dropdown > li {
+  float: left;
   position: relative;
-  background: #fff;
-  margin-bottom: 30px; }
+  border-right: 1px solid #dbdbdb;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  .dropdown > li:first-child {
+    border-right: 0px none; }
+  .dropdown > li:last-child {
+    border-right: 0 none; }
+  .dropdown > li a {
+    display: block;
+    font-size: 1.2em;
+    line-height: 29px;
+    padding: 10px 27px;
+    color: #808080; }
+  .dropdown > li:hover > a, .dropdown > li.hover > a {
+    background: #7bbbd7;
+    background: rgba(237, 246, 250, 0.15);
+    color: #000; }
+.dropdown .link-more a {
+  padding: 3px 20px;
+  line-height: 0; }
+.dropdown .menu-order-now {
+  float: right;
+  padding: 2px 20px; }
 
-.boxed-blue, a.boxed-blue {
-  background: #67b0d1; }
-
-.boxed-green, a.boxed-green {
-  background: #60cd9b; }
-
-.boxed-red, a.boxed-red {
-  background: #E87352; }
-
-.boxed-yellow, a.boxed-yellow {
-  background: #EBC85E; }
-
-.boxed-turquoise, a.boxed-turquoise {
-  background: #3BBEC0; }
-
-.boxed-black, a.boxed-black {
-  background: #333; }
-
-.boxed-brown, a.boxed-brown {
-  background: #a48b60; }
-
+/* Page Items, widgets, etc. */
 /*-----------------------------------*/
 /* Services */
 /*-----------------------------------*/
@@ -1141,6 +1149,32 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus {
   .payment-form .form-inner {
     padding: 20px 0 !important; }
  }
+
+.boxed, a.boxed {
+  position: relative;
+  background: #fff;
+  margin-bottom: 30px; }
+
+.boxed-blue, a.boxed-blue {
+  background: #67b0d1; }
+
+.boxed-green, a.boxed-green {
+  background: #60cd9b; }
+
+.boxed-red, a.boxed-red {
+  background: #E87352; }
+
+.boxed-yellow, a.boxed-yellow {
+  background: #EBC85E; }
+
+.boxed-turquoise, a.boxed-turquoise {
+  background: #3BBEC0; }
+
+.boxed-black, a.boxed-black {
+  background: #333; }
+
+.boxed-brown, a.boxed-brown {
+  background: #a48b60; }
 
 /*-----------------------------------*/
 /* Tabs */
@@ -1899,6 +1933,57 @@ td.ui-datepicker-other-month span {
 .widget-question .btn {
   float: right;
   margin-left: 20px; }
+
+/*-----------------------------------*/
+/* Avatar Placeholder */
+/*-----------------------------------*/
+.widget-avatar .inner {
+  padding: 34px 25px 22px;
+  text-align: center; }
+
+.widget-avatar h5 {
+  font-size: 18px;
+  font-weight: 700;
+  font-style: normal;
+  color: #56462a;
+  margin-bottom: 6px; }
+
+.widget-avatar .subtitle, .widget-avatar .followers {
+  font-size: 12px;
+  font-weight: 400;
+  color: #836d48; }
+
+.widget-avatar .subtitle {
+  display: block;
+  margin-bottom: 23px; }
+
+.widget-avatar .avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 22px;
+  border: 2px solid #a1875c;
+  padding: 3px;
+  border-radius: 50%; }
+
+.widget-avatar .avatar img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%; }
+
+.textwidget-title {
+  margin-top: 1.4em;
+  margin-bottom: 0.4em; }
+
+.textwidget-title-secondary {
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  font-weight: 700; }
+
+.textwidget > ul > li {
+  line-height: 1.2em; }
+.textwidget .inset {
+  padding: 0 0.8em; }
 
 /*-----------------------------------*/
 /* Dividers */
@@ -2894,112 +2979,6 @@ td.ui-datepicker-other-month span {
   border-right: 20px solid transparent;
   border-top: 10px solid #FFF; }
 
-/*-----------------------------------*/
-/* Main Menu */
-/*-----------------------------------*/
-/* Level 0 */
-.dropdown > li {
-  float: left;
-  position: relative;
-  border-right: 1px solid #dbdbdb;
-  margin-top: 10px;
-  margin-bottom: 10px; }
-  .dropdown > li:first-child {
-    border-right: 0px none; }
-  .dropdown > li:last-child {
-    border-right: 0 none; }
-  .dropdown > li a {
-    display: block;
-    font-size: 1.2em;
-    line-height: 29px;
-    padding: 10px 27px;
-    color: #808080; }
-  .dropdown > li:hover > a, .dropdown > li.hover > a {
-    background: #7bbbd7;
-    background: rgba(237, 246, 250, 0.15);
-    color: #000; }
-.dropdown .link-more a {
-  padding: 3px 20px;
-  line-height: 0; }
-.dropdown .menu-order-now {
-  float: right;
-  padding: 2px 20px; }
-
 /*@import 'component.progressbar';*/
 /*@import 'component.pagination';*/
 /*@import 'component.carousel';*/
-/*===================================================*/
-/* 3. INDEX PAGE */
-/*===================================================*/
-/*-----------------------------------*/
-/* Avatar Placeholder */
-/*-----------------------------------*/
-.widget-avatar .inner {
-  padding: 34px 25px 22px;
-  text-align: center; }
-
-.widget-avatar h5 {
-  font-size: 18px;
-  font-weight: 700;
-  font-style: normal;
-  color: #56462a;
-  margin-bottom: 6px; }
-
-.widget-avatar .subtitle, .widget-avatar .followers {
-  font-size: 12px;
-  font-weight: 400;
-  color: #836d48; }
-
-.widget-avatar .subtitle {
-  display: block;
-  margin-bottom: 23px; }
-
-.widget-avatar .avatar {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 22px;
-  border: 2px solid #a1875c;
-  padding: 3px;
-  border-radius: 50%; }
-
-.widget-avatar .avatar img {
-  display: block;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%; }
-
-/*-------------------------------------------*/
-/* Layout on Index Page */
-/*-------------------------------------------*/
-/* Controls */
-.controls .inner {
-  padding: 18px 50px 39px; }
-
-@media (max-width: 991px) {
-  .controls .inner {
-    padding: 0px 20px 25px; }
- }
-
-.checkBoxes {
-  float: right;
-  width: 45%;
-  padding-top: 8px; }
-  .checkBoxes .custom-checkbox label, .checkBoxes .custom-radio label {
-    padding-left: 27px; }
-
-.textwidget-title {
-  margin-top: 1.4em;
-  margin-bottom: 0.4em; }
-
-.textwidget-title-secondary {
-  margin-top: 1.6em;
-  margin-bottom: 0.4em;
-  font-weight: 700; }
-
-.textwidget > ul > li {
-  line-height: 1.2em; }
-.textwidget .inset {
-  padding: 0 0.8em; }
-
-.no-margin-bottom {
-  margin-bottom: 0 !important; }

@@ -18,7 +18,7 @@ angular.module("app")
             scope.responseDataItem = responseData.blood_test_results[scope.chartId];
 
             // 'initializing' data visualization for the current element
-            $("#chart-" + scope.chartId).visualizeRisk(scope.responseDataItem);
+            $("#chart-" + scope.chartId).createSingleResultChart(scope.responseDataItem);
 
             // removing watcher
             unwatch();
@@ -40,7 +40,7 @@ angular.module("app")
         var unwatch = scope.$parent.$watch("responseData", function(responseData) {
           if (angular.isObject(responseData) && angular.isArray(responseData.blood_test_results)) {
 
-            $(".summary-chart").createSummary(responseData); // create directive
+            $(".summary-chart").createSummaryChart(responseData); // create directive
 
             // removing watcher
             unwatch();

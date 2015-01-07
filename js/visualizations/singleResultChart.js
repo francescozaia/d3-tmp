@@ -1,4 +1,4 @@
-var singleRiskChart = (function() {
+var singleResultChart = (function() {
 
   var barWidth,
   barHeight,
