@@ -47,8 +47,8 @@
 
     return gulp.src( [
       sass_source,
-      '!' + sass_base_path + '/**/component.*.scss',
-      '!' + sass_base_path + '/**/mixins.*.scss'
+      '!' + sass_base_path + '/**/components/*.scss',
+      '!' + sass_base_path + '/**/mixins/*.scss'
       ], { base: sass_base_path })
       .pipe(gulp_sass())
       .pipe(gulp.dest( base_path + '/css' ))

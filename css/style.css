@@ -2979,6 +2979,6 @@ td.ui-datepicker-other-month span {
   border-right: 20px solid transparent;
   border-top: 10px solid #FFF; }
 
-/*@import 'component.progressbar';*/
-/*@import 'component.pagination';*/
-/*@import 'component.carousel';*/
+/*@import './components/component.progressbar';*/
+/*@import './components/component.pagination';*/
+/*@import './components/component.carousel';*/
