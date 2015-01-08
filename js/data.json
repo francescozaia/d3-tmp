@@ -84,7 +84,7 @@
     {
       "id": 2,
       "name": "Nutrition",
-      "description": "How's going?",
+      "description": "How is going?",
       "marker_code": "test",
       "long_description": "",
       "advice": "",
@@ -173,7 +173,7 @@
     {
       "id": 5,
       "name": "Heart",
-      "description": "How's going with your heart'",
+      "description": "How is going with your heart",
       "marker_code": "bpm",
       "long_description": "",
       "advice": "",
